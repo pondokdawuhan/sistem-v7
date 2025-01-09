@@ -1,4 +1,50 @@
 <div>
+
+  <div class="overflow-x-auto shadow-md sm:rounded-lg w-full mt-2 lg:mt-0 mb-3">
+    <h5 class="text-center dark:text-white font-bold">JADWAL PELAJARAN SAYA HARI INI</h5>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-slate-700 uppercase bg-gray-90 dark:bg-slate-800 dark:text-white">
+        <tr>
+          <th scope="col" class="px-6 py-3 dark:bg-slate-800 dark:text-white">
+            Lembaga
+          </th>
+          <th scope="col" class="px-6 py-3 dark:bg-slate-800 dark:text-white">
+            Jam
+          </th>
+          <th scope="col" class="px-6 py-3 dark:bg-slate-800 dark:text-white">
+            Kelas
+          </th>
+          <th scope="col" class="px-6 py-3 dark:bg-slate-800 dark:text-white">
+            Mapel
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @for ($i = 1; $i < 9; $i++)
+          @foreach ($jadwals as $jadwal)
+            @if ($jadwal->jam == $i)
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {{ $jadwal->lembaga->nama_singkat }}
+                </th>
+                <td class="px-6 py-4">
+                  {{ $jadwal->jam }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ $jadwal->kelas->nama }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ $jadwal->pelajaran->nama }}
+                </td>
+              </tr>
+            @endif
+          @endforeach
+        @endfor
+      </tbody>
+    </table>
+  </div>
+
   <div class="flex gap-4 flex-wrap xl:flex-nowrap items-end">
     {{-- santri start --}}
     <div class="flex items-center gap-5 px-3 py-2 rounded-2xl w-full lg:w-1/2 justify-between dark:bg-sky-950 bg-white">
@@ -26,7 +72,6 @@
     </div>
     {{-- santri end --}}
   </div>
-
 
   <div class="flex gap-4 flex-wrap xl:flex-nowrap items-end my-2">
     {{-- Santri Kota start --}}
@@ -125,7 +170,6 @@
     {{-- Asatidz Putri end --}}
 
   </div>
-
 
   <div class="mt-5 mb-2 lg:grid grid-cols-2 gap-5 lg:gap-4">
     {{-- Kelas SMP Start --}}

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\JadwalPelajaran;
 use App\Models\User;
 use App\Models\Santri;
 use App\Models\Lembaga;
@@ -25,6 +26,7 @@ class Dashboard extends Component
           'asatidzPutra' => User::whereRelation('dataUser', 'jenis_kelamin', 'Laki-laki')->get(),
           'asatidzPutri' => User::whereRelation('dataUser', 'jenis_kelamin', 'Perempuan')->get(),
           'lembagaSemua' => Lembaga::with('kelas')->get(),
+          'jadwals' => JadwalPelajaran::with('pelajaran', 'lembaga', 'kelas')->where('hari', getHari(date('Y-m-d', time())))->where('user_id', auth()->user()->id)->get()
         ])->title('Selamat Datang ' . auth()->user()->name);
     }
 }
