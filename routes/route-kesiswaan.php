@@ -5,8 +5,10 @@ use App\Livewire\RaporSantri\RaporSantriList;
 use App\Livewire\RaporSantri\RaporSantriDetail;
 use App\Livewire\CatatanSantri\CatatanSantriEdit;
 use App\Livewire\CatatanSantri\CatatanSantriList;
+use App\Livewire\RekapPresensi\RekapPresensiList;
 use App\Livewire\CatatanSantri\CatatanSantriCreate;
 use App\Livewire\CatatanSantri\CatatanSantriDetail;
+use App\Livewire\RekapPembinaan\RekapPembinaanList;
 use App\Livewire\PembinaanSantri\PembinaanSantriEdit;
 use App\Livewire\PembinaanSantri\PembinaanSantriList;
 use App\Livewire\PenguranganPoin\PenguranganPoinEdit;
@@ -17,6 +19,8 @@ use App\Livewire\PembinaanSantri\PembinaanSantriCreate;
 use App\Livewire\PembinaanSantri\PembinaanSantriDetail;
 use App\Livewire\PenguranganPoin\PenguranganPoinCreate;
 use App\Livewire\PenguranganPoin\PenguranganPoinDetail;
+use App\Livewire\RekapPelanggaran\RekapPelanggaranList;
+use App\Livewire\RekapPenghargaan\RekapPenghargaanList;
 use App\Livewire\CekPresensi\CekPresensiSholatSantriList;
 use App\Livewire\IzinKeluarSantri\IzinKeluarSantriCreate;
 use App\Livewire\IzinKeluarSantri\IzinKeluarSantriDetail;
@@ -102,3 +106,13 @@ use App\Livewire\CekPresensiInsidentilSantri\CekPresensiInsidentilSantriList;
   // cek presensi insidentil santri start
   Route::get('/{lembaga}/kesiswaan/cekPresensiInsidentilSantri', CekPresensiInsidentilSantriList::class);
   // cek presensi insidentil santri end
+
+  // rekap presensi start
+  Route::get('/{lembaga}/kesiswaan/rekapPresensi', RekapPresensiList::class);
+  // rekap presensi end
+
+  // rekapitulasi start
+  Route::get('/kesiswaan/rekapPelanggaran', RekapPelanggaranList::class);
+  Route::get('/kesiswaan/rekapPembinaan', RekapPembinaanList::class);
+  Route::get('/kesiswaan/rekapPenghargaan', RekapPenghargaanList::class);
+  // rekapitulasi end

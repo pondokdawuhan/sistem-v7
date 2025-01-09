@@ -38,15 +38,6 @@ Route::middleware('auth')->group(function() {
   Route::get('/profil/{username}', Profil::class);
   Route::get('/editProfil/{username}',  ProfilEdit::class);
 
-  // catatan asatidz start
-  Route::get('/{lembaga}/kepala/catatanAsatidz', CatatanAsatidzList::class);
-  Route::get('/{lembaga}/kepala/catatanAsatidz/create', CatatanAsatidzCreate::class);
-  Route::get('/{lembaga}/kepala/catatanAsatidz/edit/{catatanAsatidz}', CatatanAsatidzEdit::class);
-  Route::get('/{lembaga}/kepala/catatanAsatidz/detail/{user}', CatatanAsatidzDetail::class);
-
-  // catatan asatidz end
-
-
 
   // Role khusus super admin
   Route::middleware('role:Super Admin')->group(function(){

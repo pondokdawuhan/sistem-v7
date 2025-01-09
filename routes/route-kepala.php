@@ -8,6 +8,10 @@ use App\Livewire\IzinAsatidz\IzinAsatidzDetail;
 use App\Livewire\RaporLembaga\RaporLembagaList;
 use App\Livewire\RaporSantri\RaporSantriDetail;
 use App\Livewire\RaporLembaga\RaporLembagaDetail;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzEdit;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzList;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzCreate;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzDetail;
 use App\Livewire\PembinaanSantri\PembinaanSantriEdit;
 use App\Livewire\PembinaanSantri\PembinaanSantriList;
 use App\Livewire\PembinaanSantri\PembinaanSantriCreate;
@@ -50,7 +54,14 @@ use App\Livewire\CekPresensiInsidentilSantri\CekPresensiInsidentilSantriList;
   Route::get('/{lembaga}/kepala/raporLembaga', RaporLembagaList::class);
   Route::get('/{lembaga}/kepala/raporLembaga/detail/{user}', RaporLembagaDetail::class);
 
+  
+  // catatan asatidz start
+  Route::get('/{lembaga}/kepala/catatanAsatidz', CatatanAsatidzList::class);
+  Route::get('/{lembaga}/kepala/catatanAsatidz/create', CatatanAsatidzCreate::class);
+  Route::get('/{lembaga}/kepala/catatanAsatidz/edit/{catatanAsatidz}', CatatanAsatidzEdit::class);
+  Route::get('/{lembaga}/kepala/catatanAsatidz/detail/{user}', CatatanAsatidzDetail::class);
 
+  // catatan asatidz end
 
 
 

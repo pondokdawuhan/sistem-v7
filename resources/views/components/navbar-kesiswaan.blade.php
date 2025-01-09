@@ -136,9 +136,6 @@
   </li>
   {{-- penguranganPoin Santri  End --}}
 
-
-
-
   {{-- catatan santri start --}}
   <li>
     <button type="button"
@@ -306,6 +303,81 @@
     </ul>
   </li>
   {{-- cek presensi insidentil santri  end --}}
+
+
+
+  {{-- Rekap Presensi Start --}}
+  <li class="">
+    <button type="button"
+      class="flex p-1 items-center w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+      aria-controls="dropdown-pages" data-collapse-toggle="rekapPresensibyKesiswaan">
+      <i class="fa-solid fa-book text-blue-500"></i>
+      <span class="flex-1 ml-3 text-left">Rekap Presensi</span>
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <ul id="rekapPresensibyKesiswaan" class="{{ request()->is('*rekapPresensi*') ? '' : 'hidden' }} space-y-2">
+      @foreach ($lembagas as $lembaga)
+        @foreach (auth()->user()->lembaga as $lbg)
+          @if ($lbg->id == $lembaga->id)
+            <li class="{{ request()->is($lembaga->id . '/kesiswaan/rekapPresensi') ? 'navbar-active' : '' }}">
+              <a href="/{{ $lembaga->id }}/kesiswaan/rekapPresensi" wire:navigate
+                class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">
+                <i class="fa-solid fa-book text-blue-500"></i>
+                <span class="ms-3">{{ $lembaga->nama_singkat }}</span>
+              </a>
+            </li>
+          @endif
+        @endforeach
+      @endforeach
+    </ul>
+  </li>
+  {{-- Rekap Presensi End --}}
+
+
+  {{-- Rekapitulasi Start --}}
+  <li>
+    <button type="button"
+      class="flex p-1 items-center w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+      aria-controls="dropdown-pages" data-collapse-toggle="rekapitulasibyKesiswaan">
+      <i class="fa-solid fa-book text-green-500"></i>
+      <span class="flex-1 ml-3 text-left ">Rekapitulasi</span>
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <ul id="rekapitulasibyKesiswaan" class="{{ request()->is('*rekap*') ? '' : 'hidden' }} space-y-2">
+      <li class="{{ request()->is('kesiswaan/rekapPelanggaran*') ? 'navbar-active' : '' }}">
+        <a wire:navigate href="/kesiswaan/rekapPelanggaran"
+          class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">
+          <i class="fa-solid fa-book text-green-500"></i>
+          <span class="ms-3">Pelanggaran</span>
+        </a>
+      </li>
+      <li class="{{ request()->is('kesiswaan/rekapPembinaan*') ? 'navbar-active' : '' }}">
+        <a href="/kesiswaan/rekapPembinaan" wire:navigate
+          class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">
+          <i class="fa-solid fa-book text-green-500"></i>
+          <span class="ms-3">Pembinaan Santri</span>
+        </a>
+      </li>
+      <li class="{{ request()->is('kesiswaan/rekapPenghargaan*') ? 'navbar-active' : '' }}">
+        <a href="/kesiswaan/rekapPenghargaan" wire:navigate
+          class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">
+          <i class="fa-solid fa-book text-green-500"></i>
+          <span class="ms-3">Penghargaan Santri</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  {{-- Rekapitulasi End --}}
 
   {{-- Rapor Santri Start --}}
   <li class="{{ request()->is('raporSantri*') ? 'navbar-active' : '' }}">

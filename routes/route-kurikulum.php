@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\CekPresensi\CekPresensiList;
 use App\Livewire\IzinAsatidz\IzinAsatidzList;
 use App\Livewire\IzinAsatidz\IzinAsatidzDetail;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzEdit;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzList;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzCreate;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzDetail;
 use App\Livewire\JadwalPelajaran\JadwalPelajaranList;
 use App\Livewire\PembinaanSantri\PembinaanSantriEdit;
 use App\Livewire\PembinaanSantri\PembinaanSantriList;
@@ -32,5 +36,14 @@ use App\Livewire\PembinaanSantri\PembinaanSantriDetail;
   // cek presensi start
   Route::get('/{lembaga}/kurikulum/cekPresensi', CekPresensiList::class);
   // cek presensi end
+
+  
+  // catatan asatidz start
+  Route::get('/{lembaga}/kurikulum/catatanAsatidz', CatatanAsatidzList::class);
+  Route::get('/{lembaga}/kurikulum/catatanAsatidz/create', CatatanAsatidzCreate::class);
+  Route::get('/{lembaga}/kurikulum/catatanAsatidz/edit/{catatanAsatidz}', CatatanAsatidzEdit::class);
+  Route::get('/{lembaga}/kurikulum/catatanAsatidz/detail/{user}', CatatanAsatidzDetail::class);
+
+  // catatan asatidz end
 
 
