@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\CekPresensi\CekPresensiList;
 use App\Livewire\RaporSantri\RaporSantriList;
 use App\Livewire\RaporSantri\RaporSantriDetail;
 use App\Livewire\CatatanSantri\CatatanSantriEdit;
@@ -98,6 +99,10 @@ use App\Livewire\CekPresensiInsidentilSantri\CekPresensiInsidentilSantriList;
   Route::get('/raporSantri/{kelas}/kesiswaan', RaporSantriList::class);
   Route::get('/raporSantri/detail/{santri}/{kelas}/kesiswaan', RaporSantriDetail::class);
   // rapor santri end
+
+  // cek presensi start
+  Route::get('/{lembaga}/kesiswaan/cekPresensi', CekPresensiList::class);
+  // cek presensi end
 
   // cek presensi sholat santri start
   Route::get('/{lembaga}/kesiswaan/cekPresensiSholatSantri', CekPresensiSholatSantriList::class);

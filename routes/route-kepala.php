@@ -16,6 +16,7 @@ use App\Livewire\PembinaanSantri\PembinaanSantriEdit;
 use App\Livewire\PembinaanSantri\PembinaanSantriList;
 use App\Livewire\PembinaanSantri\PembinaanSantriCreate;
 use App\Livewire\PembinaanSantri\PembinaanSantriDetail;
+use App\Livewire\CekPresensi\CekPresensiSholatSantriList;
 use App\Livewire\PresensiKegiatanAsatidz\PresensiKegiatanAsatidzList;
 use App\Livewire\PresensiKegiatanAsatidz\PresensiKegiatanAsatidzCreate;
 use App\Livewire\CekPresensiInsidentilSantri\CekPresensiInsidentilSantriList;
@@ -43,6 +44,10 @@ use App\Livewire\CekPresensiInsidentilSantri\CekPresensiInsidentilSantriList;
   // cek presensi start
   Route::get('/{lembaga}/kepala/cekPresensi', CekPresensiList::class);
   // cek presensi end
+
+    // cek presensi sholat santri start
+  Route::get('/{lembaga}/kepala/cekPresensiSholatSantri', CekPresensiSholatSantriList::class);
+  // cek preesnsi sholat santri end
   
   // cek presensi insidentil santri start
   Route::get('/{lembaga}/kepala/cekPresensiInsidentilSantri', CekPresensiInsidentilSantriList::class);

@@ -13,6 +13,8 @@ use App\Livewire\PembinaanSantri\PembinaanSantriEdit;
 use App\Livewire\PembinaanSantri\PembinaanSantriList;
 use App\Livewire\PembinaanSantri\PembinaanSantriCreate;
 use App\Livewire\PembinaanSantri\PembinaanSantriDetail;
+use App\Livewire\CekPresensi\CekPresensiSholatSantriList;
+use App\Livewire\CekPresensiInsidentilSantri\CekPresensiInsidentilSantriList;
 
 // jadwal pelajaran start
   
@@ -36,6 +38,14 @@ use App\Livewire\PembinaanSantri\PembinaanSantriDetail;
   // cek presensi start
   Route::get('/{lembaga}/kurikulum/cekPresensi', CekPresensiList::class);
   // cek presensi end
+
+    // cek presensi sholat santri start
+  Route::get('/{lembaga}/kurikulum/cekPresensiSholatSantri', CekPresensiSholatSantriList::class);
+  // cek preesnsi sholat santri end
+
+  // cek presensi insidentil santri start
+  Route::get('/{lembaga}/kurikulum/cekPresensiInsidentilSantri', CekPresensiInsidentilSantriList::class);
+  // cek presensi insidentil santri end
 
   
   // catatan asatidz start

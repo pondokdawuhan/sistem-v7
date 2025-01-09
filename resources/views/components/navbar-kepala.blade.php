@@ -128,6 +128,40 @@
   </li>
   {{-- Cek Presensi  End --}}
 
+
+  {{-- cek presensi sholat santri by kepala start --}}
+  <li>
+    <button type="button"
+      class="flex p-1 items-center w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+      aria-controls="dropdown-pages" data-collapse-toggle="cekPresensiSholatSantriByKepala">
+      <i class="fa-solid fa-book text-green-500"></i>
+      <span class="flex-1 ml-3 text-left ">Cek Presensi Sholat Santri</span>
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <ul id="cekPresensiSholatSantriByKepala"
+      class="{{ request()->is('*/cekPresensiSholatSantri*') ? '' : 'hidden' }} space-y-2">
+      @foreach ($lembagaSelainAsrama as $lembaga)
+        @foreach (auth()->user()->lembaga as $lbg)
+          @if ($lbg->id == $lembaga->id)
+            <li class="{{ request()->is($lembaga->id . '/kepala/cekPresensiSholatSantri*') ? 'navbar-active' : '' }}">
+              <a href="/{{ $lembaga->id }}/kepala/cekPresensiSholatSantri" wire:navigate
+                class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">
+                <i class="fa-solid fa-book text-green-500"></i>
+                <span class="ms-3">{{ $lembaga->nama_singkat }}</span>
+              </a>
+            </li>
+          @endif
+        @endforeach
+      @endforeach
+    </ul>
+  </li>
+  {{-- cek presensi sholat santri by kepala end --}}
+
+
   {{-- cek presensi insidentil santri  start --}}
   <li>
     <button type="button"
@@ -135,7 +169,8 @@
       aria-controls="dropdown-pages" data-collapse-toggle="cekPresensiInsidentilSantribyKepala">
       <i class="fa-solid fa-book text-green-500"></i>
       <span class="flex-1 ml-3 text-left ">Cek Presensi Insidentil Santri</span>
-      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
           clip-rule="evenodd"></path>
