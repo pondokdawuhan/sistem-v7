@@ -118,5 +118,10 @@ class Lembaga extends Model
       return $this->hasMany(DataSantri::class);
     }
 
+    public function catatanAsatidz()
+    {
+      return $this->hasMany(CatatanAsatidz::class);
+    }
+
 
 }

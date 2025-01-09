@@ -270,4 +270,9 @@ class User extends Authenticatable
       return $this->hasOne(PoinPendamping::class);
     }
 
+    public function catatanAsatidz()
+    {
+      return $this->hasMany(catatanAsatidz::class);
+    }
+
 }

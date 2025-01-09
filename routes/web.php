@@ -12,6 +12,11 @@ use App\Livewire\Alumni\AlumniCreate;
 use App\Livewire\Alumni\AlumniEdit;
 use App\Livewire\Alumni\AlumniList;
 use App\Livewire\BatasPoin\BatasPoinCreate;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzCreate;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzDetail;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzEdit;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzList;
+use App\Livewire\CatatanSantri\CatatanSantriEdit;
 use App\Livewire\CekPresensiAsrama\CekPresensiAsramaList;
 use App\Livewire\Kelulusan\KelulusanList;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiAsrama;
@@ -19,6 +24,7 @@ use App\Livewire\PresensiAsrama\PresensiAsramaCreate;
 use App\Livewire\PresensiAsrama\PresensiAsramaList;
 use App\Livewire\RaporPendamping\RaporPendampingDetail;
 use App\Livewire\RaporPendamping\RaporPendampingList;
+use App\Models\CatatanAsatidz;
 
 Route::get('/', Login::class)->name('login')->middleware('guest');
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
@@ -32,6 +38,13 @@ Route::middleware('auth')->group(function() {
   Route::get('/profil/{username}', Profil::class);
   Route::get('/editProfil/{username}',  ProfilEdit::class);
 
+  // catatan asatidz start
+  Route::get('/{lembaga}/kepala/catatanAsatidz', CatatanAsatidzList::class);
+  Route::get('/{lembaga}/kepala/catatanAsatidz/create', CatatanAsatidzCreate::class);
+  Route::get('/{lembaga}/kepala/catatanAsatidz/edit/{catatanAsatidz}', CatatanAsatidzEdit::class);
+  Route::get('/{lembaga}/kepala/catatanAsatidz/detail/{user}', CatatanAsatidzDetail::class);
+
+  // catatan asatidz end
 
 
 
