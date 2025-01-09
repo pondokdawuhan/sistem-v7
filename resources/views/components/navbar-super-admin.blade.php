@@ -343,7 +343,7 @@
       </svg>
     </button>
     <ul id="rekapPresensi" class="{{ request()->is('*rekapPresensi*') ? '' : 'hidden' }} space-y-2">
-      @foreach ($lembagas as $lembaga)
+      @foreach ($lembagaSelainAsrama as $lembaga)
         <li class="{{ request()->is($lembaga->id . '/superadmin/rekapPresensi') ? 'navbar-active' : '' }}">
           <a href="/{{ $lembaga->id }}/superadmin/rekapPresensi" wire:navigate
             class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">

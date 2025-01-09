@@ -353,7 +353,7 @@
       </svg>
     </button>
     <ul id="rekapPresensibyKesiswaan" class="{{ request()->is('*rekapPresensi*') ? '' : 'hidden' }} space-y-2">
-      @foreach ($lembagas as $lembaga)
+      @foreach ($lembagaSelainAsrama as $lembaga)
         @foreach (auth()->user()->lembaga as $lbg)
           @if ($lbg->id == $lembaga->id)
             <li class="{{ request()->is($lembaga->id . '/kesiswaan/rekapPresensi') ? 'navbar-active' : '' }}">
