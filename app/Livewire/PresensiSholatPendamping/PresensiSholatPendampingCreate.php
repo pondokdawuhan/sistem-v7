@@ -30,7 +30,7 @@ class PresensiSholatPendampingCreate extends Component
     public function render()
     {
         return view('livewire.presensi-sholat-pendamping.presensi-sholat-pendamping-create', [
-          'users' => User::whereRelation('dataUser', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->whereRelation('roles', 'name', 'Pendamping')->orderBy('name', 'asc')->get(),
+          'users' => User::role(['Pengurus', 'Pendamping'])->withoutRole('Ketua Asrama')->whereRelation('dataUser', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->orderBy('name', 'asc')->get(),
           'izinKeluarUsers' => IzinKeluarPendamping::getIzinKeluarPendampingBerlaku(),
           'izinPulangUsers' => IzinPulangPendamping::getIzinPulangPendampingBerlaku(),
         ]);

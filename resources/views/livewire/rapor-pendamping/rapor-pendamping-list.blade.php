@@ -62,22 +62,22 @@
                 <td class="px-4 py-2 text-center"><a wire:navigate
                     href="/{{ $lembaga->id }}/{{ $role }}/raporPendamping/detail/{{ $user->username }}">{{ $user->name }}</a>
                 </td>
-                <td>
+                <td class="text-center">
                   @if ($user->poinPendamping)
                     {{ $user->poinPendamping->poin_ibadah }}
                   @endif
                 </td>
-                <td>
+                <td class="text-center">
                   @if ($user->poinPendamping)
                     {{ $user->poinPendamping->poin_kegiatan }}
                   @endif
                 </td>
-                <td>
+                <td class="text-center">
                   @if ($user->poinPendamping)
                     {{ $user->poinPendamping->poin_pelanggaran }}
                   @endif
                 </td>
-                <td>
+                <td class="text-center">
                   @if ($user->poinPendamping)
                     {{ $user->poinPendamping->jumlah }}
                   @endif
