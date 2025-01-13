@@ -10,6 +10,7 @@ trait WablasTrait
     {
         $curl = curl_init();
         $token = env('SECURITY_TOKEN_WABLAS');
+        $secret_key = env('SECURITY_SECRET_WABLAS');
         $random = true;
         $payload = [
             "data" => $data
@@ -18,7 +19,7 @@ trait WablasTrait
             $curl,
             CURLOPT_HTTPHEADER,
             array(
-                "Authorization: $token",
+                "Authorization: $token.$secret_key",
                 "Content-Type: application/json"
             )
         );

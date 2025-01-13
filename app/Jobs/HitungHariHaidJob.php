@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Carbon\Carbon;
 use App\Models\HaidSantri;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -29,8 +30,10 @@ class HitungHariHaidJob implements ShouldQueue
       $haids = HaidSantri::where('watching_bot', true)->get();
 
       foreach ($haids as $haid) {
+        $now = Carbon::now();
+        $waktuHaid = Carbon::parse($haid->tanggal_mulai);
         $haid->update([
-          'lama_keluar_darah' => $haid->lama_keluar_darah + 1
+          'lama_keluar_darah' => $waktuHaid->diffInDays($now) - 1
         ]);
       }
     }

@@ -1,35 +1,37 @@
 <?php
 
 use App\Livewire\Login\Login;
+use App\Models\CatatanAsatidz;
 use App\Livewire\Profil\Profil;
+use App\Livewire\Alumni\AlumniEdit;
+use App\Livewire\Alumni\AlumniList;
 use App\Livewire\Profil\ProfilEdit;
+use App\Livewire\Alumni\AlumniCreate;
 use App\Livewire\Dashboard\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\BatasPoin\BatasPoinEdit;
 use App\Livewire\BatasPoin\BatasPoinList;
+use App\Livewire\Kelulusan\KelulusanList;
 use App\Http\Controllers\GoogleController;
-use App\Livewire\Alumni\AlumniCreate;
-use App\Livewire\Alumni\AlumniEdit;
-use App\Livewire\Alumni\AlumniList;
+use App\Http\Controllers\CronjobController;
 use App\Livewire\BatasPoin\BatasPoinCreate;
-use App\Livewire\CatatanAsatidz\CatatanAsatidzCreate;
-use App\Livewire\CatatanAsatidz\CatatanAsatidzDetail;
+use App\Livewire\CatatanSantri\CatatanSantriEdit;
 use App\Livewire\CatatanAsatidz\CatatanAsatidzEdit;
 use App\Livewire\CatatanAsatidz\CatatanAsatidzList;
-use App\Livewire\CatatanSantri\CatatanSantriEdit;
-use App\Livewire\CekPresensiAsrama\CekPresensiAsramaList;
-use App\Livewire\Kelulusan\KelulusanList;
-use App\Livewire\PerbaikanPresensi\PerbaikanPresensiAsrama;
-use App\Livewire\PresensiAsrama\PresensiAsramaCreate;
 use App\Livewire\PresensiAsrama\PresensiAsramaList;
-use App\Livewire\RaporPendamping\RaporPendampingDetail;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzCreate;
+use App\Livewire\CatatanAsatidz\CatatanAsatidzDetail;
+use App\Livewire\PresensiAsrama\PresensiAsramaCreate;
 use App\Livewire\RaporPendamping\RaporPendampingList;
-use App\Models\CatatanAsatidz;
+use App\Livewire\RaporPendamping\RaporPendampingDetail;
+use App\Livewire\CekPresensiAsrama\CekPresensiAsramaList;
+use App\Livewire\PerbaikanPresensi\PerbaikanPresensiAsrama;
 
 Route::get('/', Login::class)->name('login')->middleware('guest');
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('/logout', [Login::class, 'logout']);
+
 
 Route::middleware('auth')->group(function() {
 

@@ -45,7 +45,7 @@ class IzinSakitSantriCreate extends Component
     {
         switch ($this->role) {
           case 'pendamping':
-            $kelas = Kelas::where('lembaga_id', $this->lembaga->id)->where('user_id', auth()->user()->id)->get();
+            $kelas = Kelas::where('lembaga_id', $this->lembaga->id)->where('user_id', auth()->user()->id)->orWhereRelation('userMengajar', 'user_id', auth()->user()->id)->get();
             $array = [];
             if ($kelas) {
               foreach ($kelas as $kls) {
