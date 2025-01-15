@@ -14,7 +14,7 @@ class CatatanSantri extends Model
 
     public function santri()
     {
-      return $this->belongsTo(Santri::class);
+      return $this->belongsTo(Santri::class)->withTrashed();
     }
 
     public function user()

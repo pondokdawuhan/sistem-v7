@@ -13,12 +13,12 @@ class JurnalPresensiAsrama extends Model
 
     public function lembaga()
     {
-      return $this->belongsTo(Lembaga::class);
+      return $this->belongsTo(Lembaga::class)->withTrashed();
     }
 
     public function user()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function kelas()

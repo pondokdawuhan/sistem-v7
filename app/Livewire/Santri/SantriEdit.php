@@ -6,6 +6,7 @@ use App\Models\Santri;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
@@ -99,7 +100,7 @@ class SantriEdit extends Component
     #[Validate('nullable')]
     public $selectedKelasMadins;
     #[Validate('nullable')]
-    public $selectedKelasTpqs;
+    public $selectedKelasMmqs;
     #[Validate('nullable')]
     public $selectedKelasAsramas;
     #[Validate('nullable')]
@@ -156,7 +157,7 @@ class SantriEdit extends Component
    $this->no_wali = $santri->dataSantri->no_wali;
    $this->selectedKelasFormals = $santri->kelas_formal_id;
    $this->selectedKelasMadins = $santri->kelas_madin_id;
-   $this->selectedKelasTpqs = $santri->kelas_mmq_id;
+   $this->selectedKelasMmqs = $santri->kelas_mmq_id;
    $this->selectedKelasAsramas = $santri->kelas_asrama_id;
    $this->riwayat_penyakit = $santri->dataSantri->riwayat_penyakit;
    $this->riwayat_sd = $santri->dataSantri->riwayat_sd;
@@ -202,8 +203,8 @@ class SantriEdit extends Component
           }
         }
 
-        if ($data['selectedKelasTpqs']) {
-          foreach (array($data['selectedKelasTpqs']) as $kelas) {
+        if ($data['selectedKelasMmqs']) {
+          foreach (array($data['selectedKelasMmqs']) as $kelas) {
             if ($kelas) {
                 
               $this->santri->update([
@@ -223,6 +224,12 @@ class SantriEdit extends Component
           }
         }
        
+        Cache::forget('santri_aktif');
+      Cache::forget('santri_kota');
+      Cache::forget('santri_kab');
+      Cache::forget('santri_luar');
+      Cache::forget('santri_putra');
+      Cache::forget('santri_putri');
         session()->flash('success', 'Data Santri berhasil diubah');
         return $this->redirect('/santri', navigate:true);
     }

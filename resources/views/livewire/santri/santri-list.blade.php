@@ -45,6 +45,9 @@
               Kelas
             </th>
             <th scope="col" class="px-6 py-3">
+              Deleted at
+            </th>
+            <th scope="col" class="px-6 py-3">
               Aksi
             </th>
           </tr>
@@ -74,9 +77,8 @@
                 <div class="ps-3">
                   <div class="text-base font-semibold">{{ $santri->name }}</div>
                   <div class="font-normal text-gray-500">
-                    @if ($santri->dataSantri)
-                      {{ $santri->dataSantri->lembaga->nama ?? 'LAINNYA' }} <br>
-                    @endif{{ $santri->username }} | {{ $santri->email }}
+                    {{ $santri->dataSantri->lembaga->nama }}
+                    {{ $santri->username }} | {{ $santri->email }}
                   </div>
                 </div>
               </td>
@@ -107,32 +109,41 @@
               </td>
 
               <td class="px-6 py-4">
-                <a wire:navigate href="/santri/{{ $santri->username }}/edit"
-                  class="text-white bg-sky-500 rounded-lg text-xs px-3 py-1 inline-block"><i
-                    class="fa-solid fa-user-edit"></i></a>
+                {{ $santri->deleted_at ? $santri->deleted_at->format('d-m-Y H:i') : '' }}
+              </td>
 
-                <a wire:navigate href="/santri/show/{{ $santri->username }}"
-                  class="text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block"><i
-                    class="fa-solid fa-eye"></i></a>
+              <td class="px-6 py-4">
+                @if ($santri->deleted_at)
+                  <button type="button" wire:confirm='Apakah anda yakin?' wire:click='restore({{ $santri->id }})'
+                    class="mt-2 text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Restore</button>
+                @else
+                  <a wire:navigate href="/santri/{{ $santri->username }}/edit"
+                    class="text-white bg-sky-500 rounded-lg text-xs px-3 py-1 inline-block"><i
+                      class="fa-solid fa-user-edit"></i></a>
 
-                <a href="/santri/cetakKartuSantri/{{ $santri->username }}" target="_blank"
-                  class="text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Kartu Santri</a>
+                  <a wire:navigate href="/santri/show/{{ $santri->username }}"
+                    class="text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block"><i
+                      class="fa-solid fa-eye"></i></a>
 
-                <a href="/santri/cetakKartuWaliSantri/{{ $santri->username }}" target="_blank"
-                  class="text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Kartu Wali Santri</a>
+                  <a href="/santri/cetakKartuSantri/{{ $santri->username }}" target="_blank"
+                    class="text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Kartu Santri</a>
 
-                <button type="button" x-on:click="openModal=!openModal" wire:click='pilih("{{ $santri->username }}")'
-                  class="mt-2 text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Kirim
-                  Data</button>
+                  <a href="/santri/cetakKartuWaliSantri/{{ $santri->username }}" target="_blank"
+                    class="text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Kartu Wali Santri</a>
 
-                <button wire:click='resetPassword({{ $santri->username }})'
-                  wire:confirm='Apakah anda yakin mereset password santri ini?'
-                  class="text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Reset</button>
+                  <button type="button" x-on:click="openModal=!openModal"
+                    wire:click='pilih("{{ $santri->username }}")'
+                    class="mt-2 text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Kirim
+                    Data</button>
 
-                <button type="button"
-                  wire:confirm='Apakah anda yakin menghapus data ini? Menghapus data santri secara sembarangan akan menyebabkan error'
-                  wire:click='delete({{ $santri->id }})'
-                  class="mt-2 text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Hapus</button>
+                  <button wire:click='resetPassword({{ $santri->username }})'
+                    wire:confirm='Apakah anda yakin mereset password santri ini?'
+                    class="text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Reset</button>
+                  <button type="button"
+                    wire:confirm='Apakah anda yakin menghapus data ini? Menghapus data santri secara sembarangan akan menyebabkan error'
+                    wire:click='delete({{ $santri->id }})'
+                    class="mt-2 text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Hapus</button>
+                @endif
 
               </td>
             </tr>

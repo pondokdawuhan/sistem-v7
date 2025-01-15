@@ -20,7 +20,7 @@
         <div class="flex flex-col w-full lg:w-min gap-2">
           <label for="waktu" class="text-slate-800 dark:text-white">Waktu</label>
 
-          <select wire:model="waktu" id="waktu" class="px-3 py-1 rounded-md">
+          <select wire:model="waktu" id="waktu" class="px-3 py-1 rounded-md" required>
             <option value="">Pilih</option>
             <option value="Subuh" @if (request('waktu') == 'Subuh') selected @endif>Subuh</option>
             <option value="Dhuha" @if (request('waktu') == 'Dhuha') selected @endif>Dhuha</option>

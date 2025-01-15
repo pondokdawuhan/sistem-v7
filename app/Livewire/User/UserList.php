@@ -87,6 +87,7 @@ class UserList extends Component
 
     public function render()
     {
+        
         if ($this->search) {
           $users = User::with('lembaga', 'dataUser', 'roles')->filter($this->search)->latest()->get();
           $this->page = 1;

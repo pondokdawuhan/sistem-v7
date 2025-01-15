@@ -17,6 +17,7 @@ use Livewire\WithoutUrlPagination;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TemplateImportSantri;
+use Illuminate\Support\Facades\Cache;
 
 class SantriList extends Component
 {
@@ -64,6 +65,13 @@ class SantriList extends Component
       $santri = Santri::find($id);
 
       $santri->delete();
+
+      Cache::forget('santri_aktif');
+      Cache::forget('santri_kota');
+      Cache::forget('santri_kab');
+      Cache::forget('santri_luar');
+      Cache::forget('santri_putra');
+      Cache::forget('santri_putri');
       session()->flash('success', 'Hapus Data Santri Berhasil');
     }
 
@@ -114,13 +122,20 @@ class SantriList extends Component
       WablasTrait::sendText($kumpulan_data);
     }
 
+    public function restore($id)
+    {
+      Santri::withTrashed()->find($id)->restore();
+
+      session()->flash('success', 'Santri berhasil dipulihkan');
+    }
+
 
     public function render()
     {
         if ($this->search) {
-          $santris = Santri::with('dataSantri')->filter($this->search)->latest()->get();
+          $santris = Santri::with('dataSantri', 'dataSantri.lembaga')->withTrashed()->filter($this->search)->latest()->get();
         } else {
-          $santris = Santri::with('dataSantri')->filter($this->search)->latest()->paginate($this->paginate);
+          $santris = Santri::with('dataSantri', 'dataSantri.lembaga')->withTrashed()->filter($this->search)->latest()->paginate($this->paginate);
         }
         
         return view('livewire.santri.santri-list', [

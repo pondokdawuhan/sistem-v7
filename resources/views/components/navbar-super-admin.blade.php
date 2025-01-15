@@ -470,5 +470,15 @@
   </li>
   {{-- Rapor Pendamping end --}}
 
+  {{-- Rapor Wablas Start --}}
+  <li class="{{ request()->is('raporWablas*') ? 'navbar-active' : '' }}">
+    <a wire:navigate href="/raporWablas"
+      class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+      <i class="fa-solid fa-book text-green-500"></i>
+      <span class="ms-3">Rapor Wablas</span>
+    </a>
+  </li>
+  {{-- Rapor Wablas End --}}
+
 @endhasrole
 {{-- Super Admin Menu End --}}

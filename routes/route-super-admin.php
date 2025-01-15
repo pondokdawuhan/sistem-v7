@@ -42,7 +42,7 @@ use App\Livewire\PerbaikanPresensi\PerbaikanPresensiEkstrakurikuler;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiKegiatanAsatidz;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiSholatPendamping;
 use App\Livewire\PerbaikanPresensiInsidentilSantri\PerbaikanPresensiInsidentilSantriList;
-
+use App\Livewire\RaporWablas\RaportWablasList;
 
  // crud lembaga start
   Route::get('/lembaga', Lembaga::class);
@@ -148,3 +148,7 @@ use App\Livewire\PerbaikanPresensiInsidentilSantri\PerbaikanPresensiInsidentilSa
   Route::get('/{lembaga}/superadmin/raporPendamping', RaporPendampingList::class);
   Route::get('/{lembaga}/superadmin/raporPendamping/detail/{user}', RaporPendampingDetail::class);
   // Rapor Pendamping End
+
+  // rapor wablas start
+  Route::get('/raporWablas', RaportWablasList::class);
+  // rapor wablas end

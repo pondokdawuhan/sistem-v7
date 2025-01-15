@@ -37,20 +37,18 @@ trait WablasTrait
         // print_r($result);
     }
 
-    public static function report($date, $page = 1, $perPage = 1000) {
+    public static function report($date, $page = 1, $perPage = 500) {
       
       $curl = curl_init();
       $token = env('SECURITY_TOKEN_WABLAS');
-      // $message_id = "2bbdb474-1726-46ba-a9f2-bc29f9ff9f45";
-      // $type = "text";
+      $secret_key = env('SECURITY_SECRET_WABLAS');
       $date = $date;
       $perPage = $perPage;
-      // $phone = "081229xxxxxx";
       $page = $page;
 
       curl_setopt($curl, CURLOPT_HTTPHEADER,
           array(
-              "Authorization: $token",
+              "Authorization: $token.$secret_key",
           )
       );
       curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");

@@ -12,16 +12,16 @@ class PenghargaanSantri extends Model
     protected $guarded = ['id'];
 
     public function user() {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function santri() {
-      return $this->belongsTo(Santri::class);
+      return $this->belongsTo(Santri::class)->withTrashed();
     }
 
     public function lembaga()
     {
-      return $this->belongsTo(Lembaga::class);
+      return $this->belongsTo(Lembaga::class)->withTrashed();
     }
 
     public function scopeFilter($query, $keyword)

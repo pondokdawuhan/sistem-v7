@@ -533,7 +533,7 @@
                                 <option value="Kepala {{ $lm->nama }}">Kepala {{ $lm->nama }}</option>
                                 <option value="Kurikulum {{ $lm->nama }}">Kurikulum {{ $lm->nama }}</option>
                               @endforeach
-                              @foreach ($lembagaTpqs as $lm)
+                              @foreach ($lembagaMmqs as $lm)
                                 <option value="Kepala {{ $lm->nama }}">Kepala {{ $lm->nama }}</option>
                                 <option value="Kurikulum {{ $lm->nama }}">Kurikulum {{ $lm->nama }}</option>
                               @endforeach

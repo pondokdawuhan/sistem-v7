@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 
 class SantriCreate extends Component
 {
@@ -100,7 +101,7 @@ class SantriCreate extends Component
     #[Validate('nullable')]
     public $selectedKelasMadins;
     #[Validate('nullable')]
-    public $selectedKelasTpqs;
+    public $selectedKelasMmqs;
     #[Validate('nullable')]
     public $selectedKelasAsramas;
     #[Validate('nullable')]
@@ -157,8 +158,8 @@ class SantriCreate extends Component
           }
         }
 
-        if ($data['selectedKelasTpqs']) {
-          foreach (array($data['selectedKelasTpqs']) as $kelas) {
+        if ($data['selectedKelasMmqs']) {
+          foreach (array($data['selectedKelasMmqs']) as $kelas) {
             if ($kelas) {
                 
               $santri->update([
@@ -178,6 +179,13 @@ class SantriCreate extends Component
           }
         }
        
+        Cache::forget('santri_aktif');
+      Cache::forget('santri_kota');
+      Cache::forget('santri_kab');
+      Cache::forget('santri_luar');
+      Cache::forget('santri_putra');
+      Cache::forget('santri_putri');
+
         session()->flash('success', 'Data Santri berhasil ditambahkan');
         return $this->redirect('/santri', navigate:true);
     }

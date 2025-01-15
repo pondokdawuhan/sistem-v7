@@ -13,7 +13,7 @@ class Jurnal extends Model
 
     public function lembaga()
     {
-      return $this->belongsTo(Lembaga::class);
+      return $this->belongsTo(Lembaga::class)->withTrashed();
     }
 
     public function kelas()
@@ -28,7 +28,7 @@ class Jurnal extends Model
 
     public function user()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function scopeFilter($query, $keyword)

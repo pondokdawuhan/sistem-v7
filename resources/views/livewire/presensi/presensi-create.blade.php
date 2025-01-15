@@ -29,15 +29,34 @@
         <div class="flex flex-col w-full lg:w-min gap-2">
           <label for="pelajaran" class="text-slate-800 dark:text-white">Jam</label>
           <div class="flex flex-row flex-wrap lg:flex-nowrap">
-            @for ($i = 1; $i < $jams; $i++)
-              <div class="flex items-center ps-3">
-                <input id="{{ $i }}" wire:model="selectedJam" type="checkbox"
-                  @if (request('jam')) @if (in_array($i, request('jam'))) checked @endif @endif value="{{ $i }}"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 block">
-                <label for="{{ $i }}"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 block">{{ $i }}</label>
-              </div>
-            @endfor
+            @if ($lembaga->jenis_lembaga == 'MADIN')
+              @php
+                if (date('A', time()) == 'AM') {
+                    $jamMadin = [1, 2];
+                } else {
+                    $jamMadin = [3, 4];
+                }
+              @endphp
+              @foreach ($jamMadin as $jam)
+                <div class="flex items-center ps-3">
+                  <input id="{{ $jam }}" wire:model="selectedJam" type="checkbox"
+                    @if (request('jam')) @if (in_array($jam, request('jam'))) checked @endif @endif value="{{ $jam }}"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 block">
+                  <label for="{{ $jam }}"
+                    class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 block">{{ $jam }}</label>
+                </div>
+              @endforeach
+            @else
+              @for ($i = 1; $i < $jams; $i++)
+                <div class="flex items-center ps-3">
+                  <input id="{{ $i }}" wire:model="selectedJam" type="checkbox"
+                    @if (request('jam')) @if (in_array($i, request('jam'))) checked @endif @endif value="{{ $i }}"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 block">
+                  <label for="{{ $i }}"
+                    class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 block">{{ $i }}</label>
+                </div>
+              @endfor
+            @endif
           </div>
         </div>
 

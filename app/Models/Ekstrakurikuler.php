@@ -19,12 +19,12 @@ class Ekstrakurikuler extends Model
 
     public function santri()
     {
-        return $this->belongsToMany(Santri::class);
+        return $this->belongsToMany(Santri::class)->withTrashed();
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function presensiEkstrakurikuler() {

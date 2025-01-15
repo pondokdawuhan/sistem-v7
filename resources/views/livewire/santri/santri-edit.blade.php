@@ -647,12 +647,12 @@
             </div>
           @endforeach
 
-          @foreach ($lembagaTpqs as $lembaga)
+          @foreach ($lembagaMmqs as $lembaga)
             <div class="flex items-center gap-2 mt-2">
               <label for="kelasSmp" class="w-1/3 align-middle text-sm">Kelas {{ $lembaga->nama }}</label>
               <div class="w-2/3">
                 <select id="kelas" class="border  dark:bg-slate-800 rounded-md text-sm w-full p-2"
-                  wire:model="selectedKelasTpqs">
+                  wire:model="selectedKelasMmqs">
                   <option value="" class="text-slate-700 dark:text-white text-xs md:text-base">Pilih
                   </option>
                   @foreach ($lembaga->kelas as $kls)
