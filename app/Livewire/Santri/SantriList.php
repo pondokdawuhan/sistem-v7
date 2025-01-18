@@ -63,7 +63,7 @@ class SantriList extends Component
     {
 
       $santri = Santri::find($id);
-
+      $santri->dataSantri->update(['aktif' => false]);
       $santri->delete();
 
       Cache::forget('santri_aktif');
@@ -124,8 +124,15 @@ class SantriList extends Component
 
     public function restore($id)
     {
-      Santri::withTrashed()->find($id)->restore();
-
+      $santri = Santri::withTrashed()->find($id);
+      $santri->restore();
+      $santri->dataSantri->update(['aktif' => true]);
+       Cache::forget('santri_aktif');
+      Cache::forget('santri_kota');
+      Cache::forget('santri_kab');
+      Cache::forget('santri_luar');
+      Cache::forget('santri_putra');
+      Cache::forget('santri_putri');
       session()->flash('success', 'Santri berhasil dipulihkan');
     }
 

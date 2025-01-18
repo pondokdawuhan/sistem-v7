@@ -27,6 +27,11 @@ class Santri extends Model
       return $query->whereRelation('dataSantri', 'aktif', true);
     }
 
+    public function scopeSantriByJenisKelamin($query, $keyword)
+    {
+      return $query->whereRelation('dataSantri', 'jenis_kelamin', $keyword);
+    }
+
     
     public function scopeKabupaten($query, $keyword = null)
     {

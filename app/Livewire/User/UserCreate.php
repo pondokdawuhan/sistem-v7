@@ -14,6 +14,7 @@ use App\Models\Ekstrakurikuler;
 use Livewire\Attributes\Validate;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 
 class UserCreate extends Component
 {
@@ -157,6 +158,10 @@ class UserCreate extends Component
         } else {
             DataUser::create($data);
         }
+
+        Cache::forget('asatidz_putra');
+        Cache::forget('asatidz_putri');
+        Cache::forget('asatidz_aktif');
 
         session()->flash('success', 'Data Asatidz berhasil ditambahkan');
         return $this->redirect('/user', navigate:true);

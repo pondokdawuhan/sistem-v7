@@ -180,11 +180,11 @@ class SantriCreate extends Component
         }
        
         Cache::forget('santri_aktif');
-      Cache::forget('santri_kota');
-      Cache::forget('santri_kab');
-      Cache::forget('santri_luar');
-      Cache::forget('santri_putra');
-      Cache::forget('santri_putri');
+        Cache::forget('santri_kota');
+        Cache::forget('santri_kab');
+        Cache::forget('santri_luar');
+        Cache::forget('santri_putra');
+        Cache::forget('santri_putri');
 
         session()->flash('success', 'Data Santri berhasil ditambahkan');
         return $this->redirect('/santri', navigate:true);

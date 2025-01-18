@@ -16,43 +16,43 @@ class Dashboard extends Component
 {
   public function render()
   {
-      $santriAktif = Cache::remember('santri_aktif', Carbon::now()->addHours(8), function() {
-        return Santri::with('dataSantri')->whereRelation('dataSantri', 'aktif', true)->get();
+      $santriAktif = Cache::remember('santri_aktif', Carbon::now()->addDays(7), function() {
+        return Santri::with('dataSantri')->santriAktif()->get();
       });
       
-      $asatidzAktif = Cache::remember('asatidz_aktif', Carbon::now()->addHours(8), function() {
-        return User::with('dataUser')->whereRelation('dataUser', 'aktif', true)->get();
+      $asatidzAktif = Cache::remember('asatidz_aktif', Carbon::now()->addDays(7), function() {
+        return User::with('dataUser')->userAktif()->get();
       });
 
-      $santriKota = Cache::remember('santri_kota', Carbon::now()->addHours(8), function() {
+      $santriKota = Cache::remember('santri_kota', Carbon::now()->addDays(7), function() {
         return Santri::kabupaten('KOTA BLITAR')->get();
       });
 
-      $santriKab = Cache::remember('santri_kab', Carbon::now()->addHours(8), function() {
+      $santriKab = Cache::remember('santri_kab', Carbon::now()->addDays(7), function() {
         return Santri::kabupaten('KABUPATEN BLITAR')->get();
       });
 
-      $santriLuar = Cache::remember('santri_luar', Carbon::now()->addHours(8), function() {
+      $santriLuar = Cache::remember('santri_luar', Carbon::now()->addDays(7), function() {
         return Santri::kabupaten()->get();
       });
 
-      $santriPutra = Cache::remember('santri_putra', Carbon::now()->addHours(8), function() {
-        return Santri::whereRelation('dataSantri', 'jenis_kelamin', 'Laki-laki')->get();
+      $santriPutra = Cache::remember('santri_putra', Carbon::now()->addDays(7), function() {
+        return Santri::santriByJenisKelamin('Laki-laki')->get();
       });
 
-      $santriPutri = Cache::remember('santri_putri', Carbon::now()->addHours(8), function() {
-        return Santri::whereRelation('dataSantri', 'jenis_kelamin', 'Perempuan')->get();
+      $santriPutri = Cache::remember('santri_putri', Carbon::now()->addDays(7), function() {
+        return Santri::santriByJenisKelamin('Perempuan')->get();
       });
 
-      $asatidzPutra = Cache::remember('asatidz_putra', Carbon::now()->addHours(8), function() {
-        return User::whereRelation('dataUser', 'jenis_kelamin', 'Laki-laki')->get();
+      $asatidzPutra = Cache::remember('asatidz_putra', Carbon::now()->addDays(7), function() {
+        return User::userByJenisKelamin('Laki-laki')->get();
       });
 
-      $asatidzPutri = Cache::remember('asatidz_putri', Carbon::now()->addHours(8), function() {
-        return User::whereRelation('dataUser', 'jenis_kelamin', 'Perempuan')->get();
+      $asatidzPutri = Cache::remember('asatidz_putri', Carbon::now()->addDays(7), function() {
+        return User::userByJenisKelamin('Perempuan')->get();
       });
 
-      $lembagaDashboard = Cache::remember('lembaga_dashboard', Carbon::now()->addHours(8), function() {
+      $lembagaDashboard = Cache::remember('lembaga_dashboard', Carbon::now()->addDays(7), function() {
         return Lembaga::with('kelas')->get();
       });
     

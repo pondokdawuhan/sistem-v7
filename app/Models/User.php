@@ -56,6 +56,11 @@ class User extends Authenticatable
     {
       return $query->whereRelation('dataUser', 'aktif', true);
     }
+    
+    public function scopeUserByJenisKelamin($query, $keyword)
+    {
+      return $query->whereRelation('dataUser', 'jenis_kelamin', $keyword);
+    }
 
     public function scopeFilter($query, $keyword)
     {

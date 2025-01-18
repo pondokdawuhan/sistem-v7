@@ -14,6 +14,7 @@ use App\Models\Ekstrakurikuler;
 use Livewire\Attributes\Validate;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class UserEdit extends Component
@@ -182,6 +183,9 @@ class UserEdit extends Component
         //     $this->user->ekstrakurikuler()->sync($this->selectedEkstrakurikuler);
         // }
 
+        Cache::forget('asatidz_putra');
+        Cache::forget('asatidz_putri');
+        Cache::forget('asatidz_aktif');
         session()->flash('success', 'Data berhasil diubah');
 
         return $this->redirect('/user', navigate:true);

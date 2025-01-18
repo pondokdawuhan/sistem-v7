@@ -16,6 +16,7 @@ use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TemplateImportAsatidz;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class UserList extends Component
@@ -89,10 +90,10 @@ class UserList extends Component
     {
         
         if ($this->search) {
-          $users = User::with('lembaga', 'dataUser', 'roles')->filter($this->search)->latest()->get();
+          $users = User::with('lembaga', 'dataUser', 'roles')->withTrashed()->filter($this->search)->latest()->get();
           $this->page = 1;
         } else {
-          $users = User::with('lembaga', 'dataUser', 'roles')->filter($this->search)->latest()->paginate($this->paginate);
+          $users = User::with('lembaga', 'dataUser', 'roles')->withTrashed()->filter($this->search)->latest()->paginate($this->paginate);
           $this->page = $users->firstItem();
         }
         return view('livewire.user.user-list', [
@@ -103,11 +104,25 @@ class UserList extends Component
 
     public function delete($id)
     {
-      $user = User::find($id);
-
+      $user = User::withTrashed()->find($id);
+      $user->dataUser->update(['aktif' => false]);
       $user->delete();
-
+      Cache::forget('asatidz_putra');
+      Cache::forget('asatidz_putri');
+      Cache::forget('asatidz_aktif');
       session()->flash('success', 'Data berhasil dihapus');
+      return $this->redirect('/user', true);
+    }
+
+    public function restore($id)
+    {
+      $user = User::withTrashed()->find($id);
+      $user->dataUser->update(['aktif' => true]);
+      $user->restore();
+      Cache::forget('asatidz_putra');
+      Cache::forget('asatidz_putri');
+      Cache::forget('asatidz_aktif');
+      session()->flash('success', 'Data berhasil direstore');
       return $this->redirect('/user', true);
     }
 

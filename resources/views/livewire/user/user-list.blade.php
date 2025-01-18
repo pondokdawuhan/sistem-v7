@@ -107,32 +107,35 @@
               <td class="px-6 py-4">{{ $user->initial_password }}</td>
 
               <td class="px-6 py-4">
+                @if ($user->deleted_at)
+                  <button type="button" wire:confirm='Apakah anda yakin?' wire:click='restore({{ $user->id }})'
+                    class="mt-2 text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Restore</button>
+                @else
+                  <a wire:navigate href="/user/{{ $user->username }}/edit"
+                    class="text-white bg-sky-500 rounded-lg text-xs px-3 py-1 inline-block"><i
+                      class="fa-solid fa-user-edit"></i></a>
 
-                <a wire:navigate href="/user/{{ $user->username }}/edit"
-                  class="text-white bg-sky-500 rounded-lg text-xs px-3 py-1 inline-block"><i
-                    class="fa-solid fa-user-edit"></i></a>
+                  <a href="/user/{{ $user->username }}/show" wire:navigate
+                    class="text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block mt-2"><i
+                      class="fa-solid fa-eye"></i></a>
 
-                <a href="/user/{{ $user->username }}/show" wire:navigate
-                  class="text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block mt-2"><i
-                    class="fa-solid fa-eye"></i></a>
+                  <a href="/user/cetakKartu/{{ $user->username }}" target="_blank"
+                    class="text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block mt-2"><i
+                      class="fa-solid fa-id-card"></i></a>
 
-                <a href="/user/cetakKartu/{{ $user->username }}" target="_blank"
-                  class="text-white bg-green-500 rounded-lg text-xs px-3 py-1 inline-block mt-2"><i
-                    class="fa-solid fa-id-card"></i></a>
+                  <button type="button" x-on:click="openModal=!openModal" wire:click='pilih("{{ $user->username }}")'
+                    class="mt-2 text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Kirim
+                    Data</button>
 
-                <button type="button" x-on:click="openModal=!openModal" wire:click='pilih("{{ $user->username }}")'
-                  class="mt-2 text-white bg-amber-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer">Kirim
-                  Data</button>
-
-                <button type="button" wire:click='resetPassword({{ $user->id }})'
-                  wire:confirm='Apakah anda yakin mereset password user ini?'
-                  class="text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Reset</button>
+                  <button type="button" wire:click='resetPassword({{ $user->id }})'
+                    wire:confirm='Apakah anda yakin mereset password user ini?'
+                    class="text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block mt-2">Reset</button>
 
 
-                <a wire:click="delete({{ $user->id }})"
-                  wire:confirm="Apakah Anda yakin menghapus user ini? Menghapus user ini akan menghapus semua data yang berhubungan dengan user ini"><i
-                    class=" mt-2 fa-solid fa-trash text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer"></i></a>
-
+                  <a wire:click="delete({{ $user->id }})"
+                    wire:confirm="Apakah Anda yakin menghapus user ini? Menghapus user ini akan menghapus semua data yang berhubungan dengan user ini"><i
+                      class=" mt-2 fa-solid fa-trash text-white bg-red-500 rounded-lg text-xs px-3 py-1 inline-block cursor-pointer"></i></a>
+                @endif
               </td>
             </tr>
           @endforeach
