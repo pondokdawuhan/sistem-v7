@@ -13,11 +13,11 @@ class DataSantri extends Model
 
     public function santri()
     {
-      return $this->belongsTo(Santri::class);
+      return $this->belongsTo(Santri::class)->withTrashed();
     }
 
     public function lembaga()
     {
-      return $this->belongsTo(Lembaga::class);
+      return $this->belongsTo(Lembaga::class)->withTrashed();
     }
 }

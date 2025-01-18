@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 
+use App\Models\Kelas;
 use App\Models\PresensiSholat;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -30,7 +31,9 @@ class RekapPresensiSholat implements FromView
       }
 
       return view('exports.rekapPresensiSholat', [
-        'presensis' => $presensis
+        'presensis' => $presensis,
+        'kelas' => Kelas::all(),
+        'lembaga' => $this->lembaga
       ]);
     }
 }

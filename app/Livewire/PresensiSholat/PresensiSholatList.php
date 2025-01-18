@@ -65,7 +65,7 @@ class PresensiSholatList extends Component
 
         return view('livewire.presensi-sholat.presensi-sholat-list', [
           'presensis' => $presensis,
-          'kelass' => Kelas::where('lembaga_id', $this->lembaga->id)->get(),
+          'kelas' => Kelas::where('lembaga_id', $this->lembaga->id)->get(),
         ])->title('Presensi Sholat');
     }
 }

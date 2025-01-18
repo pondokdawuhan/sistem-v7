@@ -80,12 +80,43 @@
                 <td class="px-6 py-4">{{ date('d-m-Y H:i', strtotime($presensi->created_at)) }}</td>
                 <td class="px-6 py-4">{{ $presensi->santri->name }}</td>
                 <td class="px-6 py-4">
-                  @if ($presensi->santri->kelasSmp)
-                    {{ $presensi->santri->kelasSmp->name }}
-                  @elseif($presensi->santri->kelasMa)
-                    {{ $presensi->santri->kelasMa->name }}
-                  @else
-                  @endif
+                  @foreach ($kelas as $kls)
+                    @switch($lembaga->jenis_lembaga)
+                      @case('FORMAL')
+                        @if ($presensi->santri->kelas_formal_id)
+                          @if ($presensi->santri->kelas_formal_id == $kls->id)
+                            {{ $kls->nama ?? '' }}
+                          @endif
+                        @endif
+                      @break
+
+                      @case('MADIN')
+                        @if ($presensi->santri->kelas_madin_id)
+                          @if ($presensi->santri->kelas_madin_id == $kls->id)
+                            {{ $kls->nama ?? '' }}
+                          @endif
+                        @endif
+                      @break
+
+                      @case('TPQ')
+                        @if ($presensi->santri->kelas_tpq_id)
+                          @if ($presensi->santri->kelas_tpq_id == $kls->id)
+                            {{ $kls->nama ?? '' }}
+                          @endif
+                        @endif
+                      @break
+
+                      @case('ASRAMA')
+                        @if ($presensi->santri->kelas_asrama_id)
+                          @if ($presensi->santri->kelas_asrama_id == $kls->id)
+                            {{ $kls->nama ?? '' }}
+                          @endif
+                        @endif
+                      @break
+
+                      @default
+                    @endswitch
+                  @endforeach
                 </td>
                 <td class="px-6 py-4">{{ $presensi->waktu }}</td>
                 <td class="px-6 py-4">{{ $presensi->keterangan }}</td>
