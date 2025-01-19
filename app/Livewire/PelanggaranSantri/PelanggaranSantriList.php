@@ -45,9 +45,9 @@ class PelanggaranSantriList extends Component
     {
         if ($this->search) {
           $this->page = 1;
-          $pelanggarans = PelanggaranSantri::with('santri', 'user', 'referensiPoin')->where('lembaga_id', $this->lembaga)->filter($this->search)->latest()->get();
+          $pelanggarans = PelanggaranSantri::with('santri', 'user', 'referensiPoin', 'lembaga')->where('lembaga_id', $this->lembaga)->filter($this->search)->latest()->get();
         } else {
-          $pelanggarans = PelanggaranSantri::with('santri', 'user', 'referensiPoin')->where('lembaga_id', $this->lembaga)->latest()->paginate($this->paginate);
+          $pelanggarans = PelanggaranSantri::with('santri', 'user', 'referensiPoin', 'lembaga')->where('lembaga_id', $this->lembaga)->latest()->paginate($this->paginate);
           $this->page = $pelanggarans->firstItem();
         }
         return view('livewire.pelanggaran-santri.pelanggaran-santri-list', [

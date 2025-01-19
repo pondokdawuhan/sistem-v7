@@ -60,10 +60,11 @@ class PelanggaranSantriCreate extends Component
     public function render()
     {
         if ($this->role == 'kesiswaan') {
-          $santris = Santri::all();
+          $santris = Santri::with('dataSantri')->get();
         } else {
-          $santris = Santri::whereRelation('dataSantri', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->get();
+          $santris = Santri::with('dataSantri')->whereRelation('dataSantri', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->get();
         }
+
         return view('livewire.pelanggaran-santri.pelanggaran-santri-create', [
           'santris' => $santris,
           'referensiPoins' => ReferensiPoin::all() 

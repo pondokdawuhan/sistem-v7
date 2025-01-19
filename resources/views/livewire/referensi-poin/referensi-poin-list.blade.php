@@ -43,6 +43,9 @@
                   Nama
                 </th>
                 <th scope="col" class="px-6 py-3">
+                  Poin
+                </th>
+                <th scope="col" class="px-6 py-3">
                   Aksi
                 </th>
               </tr>
@@ -54,6 +57,7 @@
 
                   <td class="px-6 py-4">{{ $loop->iteration }}</td>
                   <td class="px-6 py-4">{{ $referensiPoin->name }} </td>
+                  <td class="px-6 py-4">{{ $referensiPoin->poin }} </td>
 
                   <td class="px-6 py-4">
 
@@ -75,8 +79,16 @@
             <h3 class="dark:text-white mb-2 border-b">Tambah Referensi Poin</h3>
             <form wire:submit.prevent='tambah'>
               <div class="flex gap-2">
-                <input type="text" wire:model='nama' class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white"
-                  required />
+                <div class="flex flex-col">
+                  <label for="" class="dark:text-white">Nama</label>
+                  <input type="text" wire:model='nama' class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white"
+                    required />
+                </div>
+                <div class="flex flex-col">
+                  <label for="" class="dark:text-white">Poin Max</label>
+                  <input type="text" wire:model='poin' class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white"
+                    required />
+                </div>
                 <button class="px-3 py-1 rounded-md bg-violet-500 text-white">Tambah</button>
               </div>
             </form>
@@ -100,6 +112,11 @@
                 <div class="flex flex-col gap-2">
                   <label for="" class="dark:text-white">Nama Referensi Poin Baru</label>
                   <input type="text" wire:model='nama_edit'
+                    class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white" required />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="" class="dark:text-white">Poin Maksimal</label>
+                  <input type="text" wire:model='poin_edit'
                     class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white" required />
                 </div>
                 <div class="flex justify-end">

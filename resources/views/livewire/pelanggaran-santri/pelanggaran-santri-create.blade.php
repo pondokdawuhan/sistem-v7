@@ -20,10 +20,17 @@
         <option value="">Pilih</option>
         @foreach ($referensiPoins as $referensiPoin)
           <option value="{{ $referensiPoin->id }}">
-            {{ $referensiPoin->name }}
+            {{ $referensiPoin->name }} (Poin Max {{ $referensiPoin->poin }})
           </option>
         @endforeach
       </select>
+    </div>
+
+
+    <div class="flex flex-col gap-2 mt-2">
+      <label for="poin" class="text-slate-900 dark:text-white">Poin</label>
+      <input type="text" class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white" wire:model="poin"
+        id="poin" required>
     </div>
 
     <div class="flex flex-col gap-2 mt-2">
@@ -38,11 +45,6 @@
         id="keterangan" required>
     </div>
 
-    <div class="flex flex-col gap-2 mt-2">
-      <label for="poin" class="text-slate-900 dark:text-white">Poin</label>
-      <input type="text" class="px-3 py-1 rounded-md dark:bg-slate-800 dark:text-white" wire:model="poin"
-        id="poin" required>
-    </div>
 
     <div class="flex gap-2 justify-center items-center mt-5">
       <a wire:navigate href="/{{ $lembaga }}/{{ $role }}/pelanggaranSantri"

@@ -9,12 +9,17 @@ class ReferensiPoinList extends Component
 {
     public $search;
     public $nama;
+    public $poin;
     public $nama_edit;
+    public $poin_edit;
     public $referensiPoin_id;
 
     public function tambah()
     {
-      ReferensiPoin::create(['name' => $this->nama]);
+      ReferensiPoin::create([
+        'name' => $this->nama,
+        'poin' => $this->poin
+      ]);
 
       session()->flash('success', 'Data Referensi Poin berhasil ditambah');
       return $this->redirect('/referensiPoin', true);
@@ -22,7 +27,10 @@ class ReferensiPoinList extends Component
 
     public function edit()
     {
-      ReferensiPoin::find($this->referensiPoin_id)->update(['name' => $this->nama_edit]);
+      ReferensiPoin::find($this->referensiPoin_id)->update([
+        'name' => $this->nama_edit,
+        'poin' => $this->poin_edit,
+      ]);
       session()->flash('success', 'Data Referensi Poin berhasil diubah');
       return $this->redirect('/referensiPoin', true);
     }
@@ -31,7 +39,7 @@ class ReferensiPoinList extends Component
     {
       ReferensiPoin::find($id)->delete();
 
-       session()->flash('success', 'Data Referensi Poin berhasil dihapus');
+      session()->flash('success', 'Data Referensi Poin berhasil dihapus');
       return $this->redirect('/referensiPoin', true);
     }
 

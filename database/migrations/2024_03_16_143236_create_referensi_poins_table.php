@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('referensi_poins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('poin');
             $table->timestamps();
         });
     }
