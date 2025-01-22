@@ -11,6 +11,7 @@
         "laravel/socialite": "^5.16",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
+        "maestroerror/php-heic-to-jpg": "^1.0",
         "milon/barcode": "^11.0",
         "spatie/laravel-permission": "^6.9"
     },

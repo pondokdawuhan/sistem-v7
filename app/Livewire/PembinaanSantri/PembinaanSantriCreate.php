@@ -5,8 +5,10 @@ namespace App\Livewire\PembinaanSantri;
 use App\Models\Santri;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Maestroerror\HeicToJpg;
 use Livewire\Attributes\Title;
 use App\Models\PembinaanSantri;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
@@ -40,12 +42,24 @@ class PembinaanSantriCreate extends Component
     {
       foreach($this->santri_id as $santri_id)
         {
-          if ($this->foto) {
-            $bukti = $this->foto->storeAs(path: 'bukti-pembinaans', name: $santri_id . Str::random(15) . '.jpg');
+          // untuk file yang diupload dari IPHONE
+          if ($this->foto->getClientOriginalExtension() == 'HEIC') {
+            $name = 'bukti-pembinaans/' . $santri_id . Str::random(15) . '.jpg';
+            HeicToJpg::convert($this->foto->path())->saveAs(storage_path('app/public/' . $name));
+            $bukti = $name;
+          } else {
+              $bukti = $this->foto->storeAs(path: 'bukti-pembinaans', name: $santri_id . Str::random(15) . '.jpg');
           }
-
+          
           if ($this->surat) {
-            $surat = $this->surat->storeAs(path: 'surat-pembinaans', name: $santri_id . Str::random(15) . '.jpg');
+            // untuk file yang diupload dari IPHONE
+            if ($this->foto->getClientOriginalExtension() == 'HEIC') {
+              $name = 'surat-pembinaans/' . $santri_id . Str::random(15) . '.jpg';
+              HeicToJpg::convert($this->foto->path())->saveAs(storage_path('app/public/' . $name));
+              $surat = $name;
+            } else {
+                $surat = $this->surat->storeAs(path: 'surat-pembinaans', name: $santri_id . Str::random(15) . '.jpg');
+            }
           }
 
           PembinaanSantri::create([

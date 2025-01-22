@@ -43,7 +43,7 @@
               <td class="px-6 py-4"><button type="button"
                   class="px-3 py-1 rounded-md text-white @switch($report['status'])
               @case('sent')
-                bg-green-500
+                bg-violet-500
                 @break
               @case('delivered')
                   bg-amber-500

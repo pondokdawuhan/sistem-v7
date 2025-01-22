@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tingkat');
             $table->boolean('kelulusan')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

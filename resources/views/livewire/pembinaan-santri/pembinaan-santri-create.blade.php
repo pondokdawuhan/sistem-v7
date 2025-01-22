@@ -44,7 +44,7 @@
           class="italic text-xs text-red-500">(Gambar max 1MB)</span></label>
       <input type="file" class="px-3 py-1 rounded-md" wire:model="foto" id="foto" required>
     </div>
-    @if ($this->foto)
+    @if ($this->foto && $this->foto->getClientOriginalExtension() != 'HEIC')
       <img src="{{ $this->foto->temporaryUrl() }}" alt="" class="img-preview w-24 h-24">
     @endif
 

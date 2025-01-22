@@ -135,7 +135,7 @@
         </div>
         <!-- Modal body -->
         <div class="flex justify-center items-center p-5">
-          <img src="{{ $bukti }}" alt="bukti" class=" lg:w-1/2 max-h-screen">
+          <img src="{{ asset('storage/' . $bukti) }}" alt="bukti" class=" lg:w-1/2 max-h-screen">
         </div>
       </div>
     </div>

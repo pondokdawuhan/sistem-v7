@@ -1,5 +1,6 @@
 <?php
 
+use Intervention\Image\Facades\Image;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;

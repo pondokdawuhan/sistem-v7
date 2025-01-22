@@ -7,24 +7,26 @@ use App\Models\Lembaga as lembaga;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\Cache;
+use Livewire\Attributes\Validate;
 use Livewire\Features\SupportNavigate\SupportNavigate;
 
 class LembagaCreate extends Component
 {
-  #[Title('Tambah Lembaga')]
+    #[Title('Tambah Lembaga')]
+    #[Validate('string')]
+    #[Validate('min:5', message: 'mininal diisi 5 karakter')]
     public $nama;
+    #[Validate('string')]
+    #[Validate('min:2', message: 'minimal diisi 2 karakter')]
     public $nama_singkat;
+    #[Validate('string')]
     public $jenis_lembaga;
+    #[Validate('integer',  message:' Jam harus diisi dengan angka')]
     public $jam;
 
     public function postLembaga()
     {
-      $data = $this->validate([
-        'nama' => 'required',
-        'nama_singkat' => 'required|min:3',
-        'jenis_lembaga' => 'required',
-        'jam' => 'required'
-      ]);
+      $data = $this->validate();
       
       Lembaga::create($data);
 

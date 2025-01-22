@@ -48,7 +48,7 @@ class KelasList extends Component
         } elseif($this->lembaga->jenis_lembaga == 'MADIN'){
         } 
         return view('livewire.kelas.kelas-list', [
-          'kelas' => Kelas::where('lembaga_id', $this->lembaga->id)->where('nama', 'like', '%' . $this->search . '%')->orderBy('nama', 'asc')->get(),
+          'kelas' => Kelas::with('user')->where('lembaga_id', $this->lembaga->id)->where('nama', 'like', '%' . $this->search . '%')->orderBy('nama', 'asc')->get(),
           'users' => User::all(),
           'usersWali' => User::orderBy('name', 'asc')->get(),
           'santris' => Santri::all(),

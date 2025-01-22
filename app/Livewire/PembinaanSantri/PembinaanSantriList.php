@@ -43,14 +43,14 @@ class PembinaanSantriList extends Component
     {
       $pembinaan = PembinaanSantri::find($id);
       $this->titleModal = 'Bukti Pembinaan ' . $pembinaan->santri->name;
-      $this->bukti = asset('storage/' . $pembinaan->foto);
+      $this->bukti = $pembinaan->foto;
     }
 
     public function lihatSurat($id)
     {
        $pembinaan = PembinaanSantri::find($id);
         $this->titleModal = 'Surat Pembinaan ' . $pembinaan->santri->name;
-        $this->bukti = asset('storage/' . $pembinaan->surat);
+        $this->bukti = $pembinaan->surat;
     }
 
 
