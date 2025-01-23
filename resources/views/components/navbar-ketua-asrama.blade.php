@@ -1,16 +1,39 @@
 @hasrole(['Super Admin', 'Ketua Asrama'])
   <h6 class="my-3 text-slate-900 dark:text-white border-b italic">Ketua Asrama</h6>
   {{-- Presensi Sholat Pendamping Start --}}
-  <li class="{{ request()->is('presensiSholatPendamping*') ? 'navbar-active' : '' }}">
-    <a wire:navigate href="/presensiSholatPendamping"
-      class="flex items-center p-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-      <i class="fa-solid fa-book text-blue-500"></i>
-      <span class="ms-3">Presensi Sholat Pendamping</span>
-    </a>
+
+
+  {{-- presensi Sholat asatidz  start --}}
+  <li>
+    <button type="button"
+      class="flex p-1 items-center w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+      aria-controls="dropdown-pages" data-collapse-toggle="presensiSholatPendampingByKetuaAsrama">
+      <i class="fa-solid fa-book text-green-500"></i>
+      <span class="flex-1 ml-3 text-left ">Presensi Sholat Pendamping</span>
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <ul id="presensiSholatPendampingByKetuaAsrama"
+      class="{{ request()->is('*/presensiSholatPendamping*') ? '' : 'hidden' }} space-y-2">
+      @foreach ($lembagaAsramas as $lembaga)
+        @foreach (auth()->user()->lembaga as $lbg)
+          @if ($lbg->id == $lembaga->id)
+            <li class="{{ request()->is($lembaga->id . '/presensiSholatPendamping*') ? 'navbar-active' : '' }}">
+              <a href="/{{ $lembaga->id }}/presensiSholatPendamping" wire:navigate
+                class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">
+                <i class="fa-solid fa-book text-green-500"></i>
+                <span class="ms-3">{{ $lembaga->nama_singkat }}</span>
+              </a>
+            </li>
+          @endif
+        @endforeach
+      @endforeach
+    </ul>
   </li>
-  {{-- Presensi Sholat Pendamping End --}}
-
-
+  {{-- presensi kegiatan asatidz  end --}}
 
   {{-- presensi kegiatan asatidz  start --}}
   <li>
@@ -150,7 +173,8 @@
       aria-controls="dropdown-pages" data-collapse-toggle="pembinaanSantriByKetuaAsrama">
       <i class="fa-solid fa-book text-blue-500"></i>
       <span class="flex-1 ml-3 text-left ">Pembinaan Santri</span>
-      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
           clip-rule="evenodd"></path>

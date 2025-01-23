@@ -39,6 +39,7 @@ class StorePresensiSholatPendamping implements ShouldQueue
             }
             if ($this->data['keterangans'][$i] != 'H') {
                 PresensiSholatPendamping::create([
+                    'lembaga_id' => $this->data['lembaga_id'],
                     'user_id' => $this->data['user_id'][$i],
                     'waktu' => $this->data['waktu'],
                     'keterangan' => $this->data['keterangans'][$i],

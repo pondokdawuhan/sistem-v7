@@ -1,7 +1,7 @@
 <div class="p-5 rounded-md bg-white text-slate-800 dark:bg-slate-900 dark:text-white">
   <x-notifsukses></x-notifsukses>
   <x-loading></x-loading>
-  <a wire:navigate href="/presensiSholatPendamping/create"
+  <a wire:navigate href="/{{ $lembaga->id }}/presensiSholatPendamping/create"
     class="inline-block bg-violet-500 text-white px-3 py-1 rounded-md my-3">Tambah</a>
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-opacity-85">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

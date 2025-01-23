@@ -1,7 +1,7 @@
 <div class=" overflow-x-auto shadow-md sm:rounded-lg bg-white p-5 rounded-md dark:bg-slate-900">
-  <form action="/presensiSholatPendamping" method="POST">
+  <form action="/{{ $lembaga->id }}/presensiSholatPendamping" method="POST">
     @csrf
-
+    <input type="hidden" name="lembaga_id" value="{{ $lembaga->id }}">
     <div>
       <div class="flex flex-col w-full lg:w-min gap-2 mb-2">
         <label for="waktu" class="text-slate-800 dark:text-white">Waktu</label>

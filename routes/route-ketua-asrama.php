@@ -30,9 +30,9 @@ use App\Livewire\PerbaikanPresensiInsidentilSantri\PerbaikanPresensiInsidentilSa
   // crud pembinaan santri end
 
   // presensi sholat pendamping start
-  Route::get('/presensiSholatPendamping', PresensiSholatPendampingList::class);
-  Route::get('/presensiSholatPendamping/create', PresensiSholatPendampingCreate::class);
-  Route::post('/presensiSholatPendamping', [PresensiSholatPendampingCreate::class, 'tambah']);
+  Route::get('/{lembaga}/presensiSholatPendamping', PresensiSholatPendampingList::class);
+  Route::get('/{lembaga}/presensiSholatPendamping/create', PresensiSholatPendampingCreate::class);
+  Route::post('/{lembaga}/presensiSholatPendamping', [PresensiSholatPendampingCreate::class, 'tambah']);
   // presensi sholat pendamping end
 
   

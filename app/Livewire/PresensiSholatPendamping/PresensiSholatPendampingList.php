@@ -2,6 +2,7 @@
 
 namespace App\Livewire\PresensiSholatPendamping;
 
+use App\Models\Lembaga;
 use Livewire\Component;
 use App\Models\PresensiSholatPendamping;
 use Livewire\Attributes\Title;
@@ -14,8 +15,12 @@ class PresensiSholatPendampingList extends Component
     public $page;
     public $paginate = 20;
     public $search;
+    public $lembaga;
 
-    #[Title('Presensi Sholat Pendamping')]
+    public function mount(Lembaga $lembaga)
+    {
+      $this->lembaga = $lembaga;
+    }
 
     public function render()
     {
@@ -26,6 +31,6 @@ class PresensiSholatPendampingList extends Component
         }
         return view('livewire.presensi-sholat-pendamping.presensi-sholat-pendamping-list', [
           'presensis' => $presensis
-        ]);
+        ])->title('Presensi Sholat Pendamping ' . $this->lembaga->nama);
     }
 }
