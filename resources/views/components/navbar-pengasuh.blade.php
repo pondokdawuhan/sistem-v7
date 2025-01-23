@@ -24,7 +24,7 @@
     </a>
   </li>
   {{-- Izin Pulang pengasuh End --}}
-  
+
   {{-- Cek Presensi  Start --}}
   <li>
     <button type="button"
@@ -79,9 +79,9 @@
     </ul>
   </li>
   {{-- cek presensi sholat santri by Pengasuh end --}}
-  
-  
-  
+
+
+
   {{-- cek presensi asrama start --}}
   <li>
     <button type="button"
@@ -145,7 +145,8 @@
       aria-controls="dropdown-pages" data-collapse-toggle="pembinaanSantriBypengasuh">
       <i class="fa-solid fa-book text-blue-500"></i>
       <span class="flex-1 ml-3 text-left ">Pembinaan Santri</span>
-      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
           clip-rule="evenodd"></path>
@@ -173,14 +174,15 @@
       aria-controls="dropdown-pages" data-collapse-toggle="raporLembagabyPengasuh">
       <i class="fa-solid fa-book text-green-500"></i>
       <span class="flex-1 ml-3 text-left ">Rapor Asatidz</span>
-      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
           clip-rule="evenodd"></path>
       </svg>
     </button>
     <ul id="raporLembagabyPengasuh" class="{{ request()->is('*/raporLembaga*') ? '' : 'hidden' }} space-y-2">
-      @foreach ($lembagas as $lembaga)
+      @foreach ($lembagaSelainAsrama as $lembaga)
         <li class="{{ request()->is($lembaga->id . '/pengasuh/raporLembaga*') ? 'navbar-active' : '' }}">
           <a href="/{{ $lembaga->id }}/pengasuh/raporLembaga" wire:navigate
             class="flex items-center ml-5 p-1 text-gray-900 rounded-lg dark:text-white">

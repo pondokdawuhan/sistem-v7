@@ -394,7 +394,7 @@
       </svg>
     </button>
     <ul id="raporLembagabyAdmin" class="{{ request()->is('*/raporLembaga*') ? '' : 'hidden' }} space-y-2">
-      @foreach ($lembagas as $lembaga)
+      @foreach ($lembagaSelainAsrama as $lembaga)
         @foreach (auth()->user()->lembaga as $lbg)
           @if ($lbg->id == $lembaga->id)
             <li class="{{ request()->is($lembaga->id . '/admin/raporLembaga*') ? 'navbar-active' : '' }}">
