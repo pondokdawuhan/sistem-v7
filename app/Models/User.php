@@ -145,7 +145,7 @@ class User extends Authenticatable
 
     public function lembaga()
     {
-      return $this->belongsToMany(Lembaga::class);
+      return $this->belongsToMany(Lembaga::class)->withTrashed();
     }
 
     public function pelajaran()

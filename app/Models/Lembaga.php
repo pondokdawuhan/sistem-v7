@@ -15,7 +15,7 @@ class Lembaga extends Model
 
     public function kelas()
     {
-      return $this->hasMany(Kelas::class);
+      return $this->hasMany(Kelas::class)->withTrashed();
     }
 
     public function pelajaran()

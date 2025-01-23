@@ -18,7 +18,7 @@ class Pelajaran extends Model
 
     public function user()
     {
-      return $this->belongsToMany(User::class);
+      return $this->belongsToMany(User::class)->withTrashed();
     }
 
     public function presensi()
