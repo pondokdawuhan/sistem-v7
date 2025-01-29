@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('lembaga_id');
             $table->string('nama');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,12 +20,12 @@ class Lembaga extends Model
 
     public function pelajaran()
     {
-      return $this->hasMany(Pelajaran::class);
+      return $this->hasMany(Pelajaran::class)->withTrashed();
     }
 
     public function user()
     {
-      return $this->belongsToMany(User::class);
+      return $this->belongsToMany(User::class)->withTrashed();
     }
 
     public function presensi()
