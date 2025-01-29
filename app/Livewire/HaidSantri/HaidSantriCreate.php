@@ -65,7 +65,7 @@ class HaidSantriCreate extends Component
     public function render()
     {
         return view('livewire.haid-santri.haid-santri-create', [
-          'santris' => Santri::whereRelation('dataSantri', 'jenis_kelamin', 'Perempuan')->get()
+          'santris' => Santri::with('dataSantri')->whereRelation('dataSantri', 'jenis_kelamin', 'Perempuan')->get()
         ]);
     }
 }

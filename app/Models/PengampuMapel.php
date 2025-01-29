@@ -15,11 +15,11 @@ class PengampuMapel extends Model
 
     public function user()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function pelajaran()
     {
-      return $this->belongsTo(Pelajaran::class);
+      return $this->belongsTo(Pelajaran::class)->withTrashed();
     }
 }
