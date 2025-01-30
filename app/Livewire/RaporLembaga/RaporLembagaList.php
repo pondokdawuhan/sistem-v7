@@ -34,7 +34,7 @@ class RaporLembagaList extends Component
     }
     public function render()
     {
-        $user = User::with('izinAsatidz', 'pelajaran', 'jurnal', 'jurnalSholatSantri', 'jurnalPresensiInsidentilSantri')->whereRelation('lembaga', 'nama', $this->lembaga->nama)->orderBy('name', 'asc')->get();
+        $user = User::with('izinAsatidz', 'pelajaran', 'jurnal', 'jurnalSholatSantri', 'jurnalPresensiInsidentilSantri', 'jadwalPelajaran')->whereRelation('lembaga', 'nama', $this->lembaga->nama)->orderBy('name', 'asc')->get();
 
         $bulanTahun = explode('|', $this->selectedBulan);
         $pekanEfektif = pekanEfektif($bulanTahun[0], $bulanTahun[1]);

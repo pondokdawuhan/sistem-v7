@@ -30,7 +30,7 @@
     </div>
 
     <div class="overflow-auto">
-      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-opacity-85">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-opacity-85 table-auto">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">
@@ -90,7 +90,7 @@
               <td class="px-6 py-4">
                 @if ($user->roles)
                   @foreach ($user->roles as $role)
-                    {{ $role->name }} |
+                    {{ $role->name }} <br>
                   @endforeach
                 @endif
               </td>
@@ -101,7 +101,7 @@
               </td>
               <td class="px-6 py-4">
                 @foreach ($user->lembaga as $lembaga)
-                  {{ $lembaga->nama_singkat }} |
+                  {{ $lembaga->nama_singkat }} <br>
                 @endforeach
               </td>
               <td class="px-6 py-4">{{ $user->initial_password }}</td>

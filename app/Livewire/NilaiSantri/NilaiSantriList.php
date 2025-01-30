@@ -8,6 +8,7 @@ use App\Models\Lembaga;
 use Livewire\Component;
 use App\Models\Pelajaran;
 use App\Models\NilaiSantri;
+use App\Models\TahunAjaran;
 
 class NilaiSantriList extends Component
 {
@@ -47,7 +48,8 @@ class NilaiSantriList extends Component
           'kelas' => Kelas::whereRelation('userMengajar', 'user_id', auth()->user()->id)->where('lembaga_id', $this->lembaga->id)->get(),
           'pelajarans' => Pelajaran::whereRelation('user', 'user_id', auth()->user()->id)->where('lembaga_id', $this->lembaga->id)->get(),
           'kelasName' => request('kelas') ?? null,
-          'pelajaranName' => request('pelajaran') ?? null
+          'pelajaranName' => request('pelajaran') ?? null,
+          'tahunAjaran' => TahunAjaran::first()
         ])->title('Nilai Santri ' . $this->lembaga->nama);
     }
 }

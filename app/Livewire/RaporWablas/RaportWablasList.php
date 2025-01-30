@@ -28,7 +28,7 @@ class RaportWablasList extends Component
       
         return view('livewire.rapor-wablas.raport-wablas-list', [
           'reports' => $data,
-          'users' => User::all()
+          'users' => User::with('dataUser')->get()
         ])->title('Data Wablas');
     }
 }

@@ -42,18 +42,9 @@
         <label for="" class="text-slate-900 dark:text-white">Tahun</label>
         <select wire:model="selectedTahun" id="tahun" class="rounded-md px-3 py-1" required>
           <option value="">Pilih</option>
-          <option value="{{ date('Y', time()) }}/{{ date('Y', time() + 31557600) }}"
-            @if (request('tahun') == date('Y', time()) . '/' . date('Y', time() + 31557600)) selected @endif>
-            {{ date('Y', time()) }}/{{ date('Y', time() + 31557600) }}</option>
+          <option value="{{ $tahunAjaran->tahun }}" @if (request('tahun')) selected @endif>
+            {{ $tahunAjaran->tahun }}</option>
 
-          <option value="{{ date('Y', time() - 31557600) }}/{{ date('Y', time()) }}"
-            @if (request('tahun') == date('Y', time() - 31557600) . '/' . date('Y', time())) selected @endif>
-            {{ date('Y', time() - 31557600) }}/{{ date('Y', time()) }}</option>
-          @for ($i = 1; $i < 11; $i++)
-            <option value="{{ date('Y', time() - 31557600 * ($i + 1)) }}/{{ date('Y', time() - 31557600 * $i) }}"
-              @if (request('tahun') == date('Y', time() - 31557600 * ($i + 1)) . '/' . date('Y', time() - 31557600 * $i)) selected @endif>
-              {{ date('Y', time() - 31557600 * ($i + 1)) }}/{{ date('Y', time() - 31557600 * $i) }}</option>
-          @endfor
 
         </select>
       </div>

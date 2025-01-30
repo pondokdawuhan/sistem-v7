@@ -84,9 +84,9 @@ class PembinaanSantriCreate extends Component
     public function render()
     {
       if ($this->role == 'pengurus' || $this->role == 'pendamping' || $this->role == 'ketuaAsrama') {
-        $santris = Santri::whereRelation('dataSantri', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->get();
+        $santris = Santri::with('dataSantri')->whereRelation('dataSantri', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->get();
       } else {
-          $santris = Santri::all();
+          $santris = Santri::with('dataSantri')->get();
         }
         return view('livewire.pembinaan-santri.pembinaan-santri-create', [
           'santris' => $santris

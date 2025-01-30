@@ -2,13 +2,14 @@
 
 namespace App\Livewire\PresensiKegiatanAsatidz;
 
-use App\Jobs\StorePresensiKegiatanAsatidz;
-use App\Models\IzinAsatidz;
 use App\Models\User;
 use App\Models\Lembaga;
 use Livewire\Component;
+use App\Models\IzinAsatidz;
 use App\Models\IzinKeluarPendamping;
 use App\Models\IzinPulangPendamping;
+use Illuminate\Database\Eloquent\Builder;
+use App\Jobs\StorePresensiKegiatanAsatidz;
 
 class PresensiKegiatanAsatidzCreate extends Component
 {
@@ -40,15 +41,16 @@ class PresensiKegiatanAsatidzCreate extends Component
     public function render()
     {
         if ($this->lembaga->jenis_lembaga == 'ASRAMA') {
-          $users = User::whereRelation('lembaga', 'nama', $this->lembaga->nama)->whereRelation('dataUser', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->orderBy('name', 'asc')->get();
+          $users = User::with('dataUser')->whereRelation('lembaga', 'nama', $this->lembaga->nama)->role(['Pengurus', 'Pendamping'])->withoutRole('Ketua Asrama')->whereRelation('dataUser', 'jenis_kelamin', auth()->user()->dataUser->jenis_kelamin)->orderBy('name', 'asc')->get();
+          
         } else {
-          $users = User::whereRelation('lembaga', 'nama', $this->lembaga->nama)->orderBy('name', 'asc')->get();
+          $users = User::with('dataUser')->whereRelation('lembaga', 'nama', $this->lembaga->nama)->orderBy('name', 'asc')->get();
         }
         return view('livewire.presensi-kegiatan-asatidz.presensi-kegiatan-asatidz-create', [
           'users' => $users,
           'izinKeluarUsers' => IzinKeluarPendamping::getIzinKeluarPendampingBerlaku(),
           'izinPulangUsers' => IzinPulangPendamping::getIzinPulangPendampingBerlaku(),
           'izinAsatidz' => IzinAsatidz::getIzinBerlaku()
-        ]);
+        ])->title('Tambah Presensi Kegiatan Asatidz ' . $this->lembaga->nama);
     }
 }

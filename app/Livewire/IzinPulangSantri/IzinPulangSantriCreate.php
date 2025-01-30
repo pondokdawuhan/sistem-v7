@@ -96,7 +96,7 @@ class IzinPulangSantriCreate extends Component
                 array_push($array, $kls->id);
               }
             }
-            $santris = Santri::whereIn('kelas_asrama_id', $array)->get();
+            $santris = Santri::with('dataSantri')->whereIn('kelas_asrama_id', $array)->get();
             break;
           case 'pengurus':
             $kelas = Kelas::where('lembaga_id', $this->lembaga->id)->get();
@@ -106,7 +106,7 @@ class IzinPulangSantriCreate extends Component
                 array_push($array, $kls->id);
               }
             }
-            $santris = Santri::whereIn('kelas_asrama_id', $array)->get();
+            $santris = Santri::with('dataSantri')->whereIn('kelas_asrama_id', $array)->get();
             break;
         }
         return view('livewire.izin-pulang-santri.izin-pulang-santri-create', [

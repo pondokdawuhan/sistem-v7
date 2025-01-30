@@ -94,16 +94,16 @@
               <td class="px-6 py-4">
                 @foreach ($kelass as $kls)
                   @if ($kls->id == $santri->kelas_formal_id)
-                    {{ $kls->nama }} (FORMAL)
+                    {{ $kls->nama }} (FORMAL) <br>
                   @endif
                   @if ($kls->id == $santri->kelas_madin_id)
-                    {{ $kls->nama }} (MADIN)
+                    {{ $kls->nama }} (MADIN) <br>
                   @endif
                   @if ($kls->id == $santri->kelas_mmq_id)
-                    {{ $kls->nama }} (MMQ)
+                    {{ $kls->nama }} (MMQ) <br>
                   @endif
                   @if ($kls->id == $santri->kelas_asrama_id)
-                    {{ $kls->nama }} (ASRAMA)
+                    {{ $kls->nama }} (ASRAMA) <br>
                   @endif
                 @endforeach
               </td>

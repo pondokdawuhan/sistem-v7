@@ -56,7 +56,7 @@ class CekPresensiList extends Component
         'pelajaran' => Pelajaran::where('lembaga_id', $this->lembaga->id)->get(),
         'indikator_kelas' => $indikator,
         'jam' => $this->lembaga->jam + 1,
-        'jadwalPelajarans' => JadwalPelajaran::where('lembaga_id', $this->lembaga->id)->where('hari', getHari($this->tanggal))->get()
+        'jadwalPelajarans' => JadwalPelajaran::with('user', 'pelajaran')->where('lembaga_id', $this->lembaga->id)->where('hari', getHari($this->tanggal))->get()
       ])->title('Cek Presensi ' . $this->lembaga->nama);
     }
 }
