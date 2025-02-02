@@ -19,30 +19,42 @@ use Illuminate\Support\Facades\Storage;
 
 class UserEdit extends Component
 {
-    public $user;
     use WithFileUploads;
+
+    public $user;
     #[Validate('required', message: ':attribute wajib dipilih')]
+    #[Validate('string')]
     public $status;
     #[Validate('required', message: ':attribute wajib dipilih')]
+    #[Validate('boolean')]
     public $aktif;
     #[Validate('required', message: ':attribute wajib diisi')]
+    #[Validate('string')]
     public $tahun_masuk;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $niy;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $nuptk;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $nik;
     #[Validate('required', message: ':attribute wajib diisi')]
     #[Validate('min:3', message: ':attribute diisi minimal 3 karakter')]
+    #[Validate('string')]
     public $name;
     #[Validate('required', message: ':attribute wajib dipilih')]
+    #[Validate('string')]
     public $jenis_kelamin;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $tempat_lahir;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $tanggal_lahir;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $nama_ibu;
     #[Validate('image', message: 'tipe tidak valid')]
     #[Validate('file', message: 'tipe tidak valid')]
@@ -50,36 +62,52 @@ class UserEdit extends Component
     #[Validate('nullable', message: 'ukuran melebihi 1MB')]
     public $foto;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $provinsi;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $kabupaten;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $kecamatan;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $desa;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $jalan;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $dusun;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $rt;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $rw;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $kodepos;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_sd;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_smp;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_sma;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_kuliah_s1;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_kuliah_s2;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_kuliah_s3;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_pondok;
     #[Validate('required', message: ':attribute wajib diisi')]
     public $no_hp;

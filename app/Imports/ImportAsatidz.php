@@ -23,11 +23,11 @@ class ImportAsatidz implements ToModel, WithHeadingRow
         if (isset($row['username'])) {
           $username = $row['username'];
         } else {
-          $username = mt_rand(1, 9) .  abs(random_int(1000000, 9999999));
+          $username = generateUsernameUser();
         }
 
         $password = Str::password(8, symbols:false);
-        User::create([
+        $user = User::create([
             'name' => $row['nama'],
             'username' => $username,
             'password' => Hash::make($password),
@@ -35,7 +35,6 @@ class ImportAsatidz implements ToModel, WithHeadingRow
             'initial_password' => $password
         ]);
 
-        $user = User::where('username', $username)->first();
 
         DataUser::create([
             'user_id' => $user->id,

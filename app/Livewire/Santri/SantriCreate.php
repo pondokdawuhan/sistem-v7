@@ -119,16 +119,15 @@ class SantriCreate extends Component
     {
       $data = $this->validate();
       
-      $username = mt_rand(1, 9) .  abs(random_int(1000000, 9999999));
+      $username = generateUsernameSantri();
       $password = Str::password(8, symbols:false);
       $data['username'] = $username;
       $data['password'] = Hash::make($password);
       $data['initial_password'] = $password;
         
         
-      Santri::create($data);
+      $santri = Santri::create($data);
 
-      $santri = Santri::where('username', $data['username'])->first();
       $data['santri_id'] = $santri->id;
 
       if ($this->foto) {

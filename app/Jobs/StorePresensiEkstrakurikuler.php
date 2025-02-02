@@ -31,7 +31,7 @@ class StorePresensiEkstrakurikuler implements ShouldQueue
     {
       for ($i = 0; $i < count($this->data['santri_id']); $i++) {
          if ($this->data['keterangans'][$i] == 'A') {
-              $kode = abs(mt_rand(10000, 999999));
+              $kode = generateKodePelanggaranSantri();
             } else {
               $kode = null;
             }

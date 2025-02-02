@@ -22,10 +22,10 @@ class ImportSantri implements ToModel, WithHeadingRow
         if (isset($row['username'])) {
           $username = $row['username'];
         } else {
-          $username = mt_rand(1, 9) .  abs(random_int(1000000, 9999999));
+          $username = generateUsernameSantri();
         }
         $password = Str::password(8, symbols:false);
-        Santri::create([
+        $santri = Santri::create([
             'name' => $row['nama'],
             'username' => $username,
             'password' => Hash::make($password),
@@ -33,7 +33,6 @@ class ImportSantri implements ToModel, WithHeadingRow
             'email' => $row['email']
         ]);
 
-        $santri = Santri::where('username', $username)->first();
 
         DataSantri::create([
             'santri_id' => $santri->id,

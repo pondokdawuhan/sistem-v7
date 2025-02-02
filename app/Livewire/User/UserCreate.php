@@ -19,28 +19,38 @@ use Illuminate\Support\Facades\Cache;
 class UserCreate extends Component
 {
     use WithFileUploads;
-    #[Validate('required', message: ':attribute wajib dipilih')]
+    #[Validate('string')]
+    #[Validate('required', message: 'status wajib dipilih')]
     public $status;
-    #[Validate('required', message: ':attribute wajib dipilih')]
+    #[Validate('required', message: 'status aktif wajib dipilih')]
+    #[Validate('boolean')]
     public $aktif;
-    #[Validate('required', message: ':attribute wajib diisi')]
+    #[Validate('required', message: 'tahun masuk wajib diisi')]
+    #[Validate('string')]
     public $tahun_masuk;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $niy;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $nuptk;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $nik;
-    #[Validate('required', message: ':attribute wajib diisi')]
-    #[Validate('min:3', message: ':attribute diisi minimal 3 karakter')]
+    #[Validate('required', message: 'nama wajib diisi')]
+    #[Validate('min:3', message: 'nama diisi minimal 3 karakter')]
     public $name;
-    #[Validate('required', message: ':attribute wajib dipilih')]
+    #[Validate('required', message: 'jenis kelamin wajib dipilih')]
+    #[Validate('string')]
     public $jenis_kelamin;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $tempat_lahir;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $tanggal_lahir;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $nama_ibu;
     #[Validate('image', message: 'tipe tidak valid')]
     #[Validate('file', message: 'tipe tidak valid')]
@@ -48,37 +58,54 @@ class UserCreate extends Component
     #[Validate('nullable', message: 'ukuran melebihi 1MB')]
     public $foto;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $provinsi;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $kabupaten;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $kecamatan;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $desa;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $jalan;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $dusun;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $rt;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $rw;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $kodepos;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_sd;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_smp;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_sma;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_kuliah_s1;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_kuliah_s2;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_kuliah_s3;
     #[Validate('nullable')]
+    #[Validate('string')]
     public $riwayat_pondok;
+    #[Validate('string')]
     #[Validate('required', message: ':attribute wajib diisi')]
     public $no_hp;
     #[Validate('nullable', message: ':attribute boleh kosong')]
@@ -89,6 +116,7 @@ class UserCreate extends Component
     #[Validate('required', message: 'lembaga wajib dipilih minimal 1')]
     public $selectedLembagas = [];
     #[Validate('nullable')]
+    #[Validate('string')]
     public $notifikasiKhusus;
     #[Validate('nullable')]
     public $selectedKelas = [];
@@ -100,13 +128,14 @@ class UserCreate extends Component
 
     public function tambah()
     {
+      
       $data = $this->validate();
       $password = Str::password(8, symbols:false);
-      $data['username'] = mt_rand(1, 9) .  abs(random_int(1000000, 9999999));
+      $data['username'] = generateUsernameUser();
       $data['password'] = Hash::make($password);
       $data['initial_password'] = $password;
 
-      User::create([
+      $user = User::create([
           'name' => $data['name'],
           'username' => $data['username'],
           'password' => $data['password'],
@@ -114,7 +143,7 @@ class UserCreate extends Component
           'initial_password' => $data['initial_password']
       ]);
 
-      $user = User::where('username', $data['username'])->first();
+      
 
       // insert data user yang baru saja didaftarkan
        

@@ -37,7 +37,7 @@ class StorePresensiKegiatanAsatidz implements ShouldQueue
             if ($this->lembaga->jenis_lembaga == 'ASRAMA') {
               if ($this->data['keterangans'][$i] != 'H') {
                if ($this->data['keterangans'][$i] == 'A') {
-                  $kode = abs(mt_rand(10000, 999999));
+                  $kode = generateKodePelanggaranSantri();
                 } else {
                   $kode = null;
                 }
