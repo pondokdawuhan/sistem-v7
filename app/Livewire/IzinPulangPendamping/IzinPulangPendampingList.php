@@ -62,7 +62,7 @@ class IzinPulangPendampingList extends Component
 
     public function render()
     {
-      if(request()->is('keamanan/izinPulangPendamping') || request()->is('pengasuh/izinPulangPendamping')) {
+      if($this->role == 'keamanan' || $this->role == 'pengasuh' || $this->role == 'ketuaasrama') {
         $izins = IzinPulangPendamping::with('user');
       } else {
         $izins = IzinPulangPendamping::where('user_id', auth()->user()->id);

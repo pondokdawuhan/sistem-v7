@@ -6,7 +6,7 @@
         <h4 class="text-center font-semibold">{{ session('success') }}</h4>
       </div>
     @endif
-    @if ($role != 'keamanan' && $role != 'pengasuh')
+    @if ($role != 'keamanan' && $role != 'pengasuh' && $role != 'ketuaasrama')
       <a href="/{{ $lembaga->id }}/{{ $role }}/izinPulangSantri/create"
         class=" bg-violet-500 text-white px-3 py-1 rounded-md inline-block mb-2" wire:navigate>Tambah</a>
     @endif

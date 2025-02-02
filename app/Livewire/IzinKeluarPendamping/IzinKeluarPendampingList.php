@@ -58,7 +58,7 @@ class IzinKeluarPendampingList extends Component
     public function render()
     {
 
-      if ($this->role == 'keamanan') {
+      if ($this->role == 'keamanan' || $this->role == 'ketuaasrama') {
         $izins = IzinKeluarPendamping::with('user');
       } else {
         $izins = IzinKeluarPendamping::where('user_id', auth()->user()->id);

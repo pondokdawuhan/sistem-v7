@@ -7,7 +7,7 @@
       </div>
     @endif
 
-    @if ($role != 'keamanan')
+    @if ($role != 'keamanan' && $role != 'ketuaasrama')
       <a wire:navigate href="/{{ $lembaga->id }}/{{ $role }}/izinKeluarSantri/create"
         class=" bg-violet-500 text-white px-3 py-1 rounded-md inline-block mb-2">Tambah</a>
     @endif

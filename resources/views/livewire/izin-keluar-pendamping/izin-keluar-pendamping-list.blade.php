@@ -4,7 +4,7 @@
       <h4 class="text-center font-semibold">{{ session('success') }}</h4>
     </div>
   @endif
-  @if ($role != 'keamanan')
+  @if ($role != 'keamanan' && $role != 'ketuaasrama')
     <a href="/{{ $role }}/izinKeluarPendamping/create" wire:navigate
       class=" bg-violet-500 text-white px-3 py-1 rounded-md inline-block mb-2">Tambah</a>
   @endif
