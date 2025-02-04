@@ -23,10 +23,10 @@
         {{-- <x-navbar-kesiswaan></x-navbar-kesiswaan> --}}
         {{-- <x-navbar-kepala></x-navbar-kepala> --}}
         {{-- <x-navbar-wali-kelas></x-navbar-wali-kelas> --}}
-        <x-navbar-pendamping></x-navbar-pendamping>
+        {{-- <x-navbar-pendamping></x-navbar-pendamping> --}}
         {{-- <x-navbar-pengurus></x-navbar-pengurus> --}}
         <x-navbar-ketua-asrama></x-navbar-ketua-asrama>
-        <x-navbar-keamanan></x-navbar-keamanan>
+        {{-- <x-navbar-keamanan></x-navbar-keamanan> --}}
         {{-- <x-navbar-pengasuh></x-navbar-pengasuh> --}}
         {{-- <x-navbar-yayasan></x-navbar-yayasan> --}}
 

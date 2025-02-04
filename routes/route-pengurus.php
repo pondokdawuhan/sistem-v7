@@ -52,106 +52,106 @@ use App\Livewire\PresensiInsidentilSantri\PresensiInsidentilSantriCreate;
 
 
 
-  // crud izin keluar santri by pengurus start
-  Route::get('/{lembaga}/pengurus/izinKeluarSantri', IzinKeluarSantriList::class);
-  Route::get('/{lembaga}/pengurus/izinKeluarSantri/create', IzinKeluarSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/izinKeluarSantri/{izinKeluarSantri}/edit', IzinKeluarSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/detailIzinKeluarSantri/{santri}', IzinKeluarSantriDetail::class);
-  // crud izin keluar santri by pengurus end
+// crud izin keluar santri by pengurus start
+Route::get('/{lembaga}/pengurus/izinKeluarSantri', IzinKeluarSantriList::class);
+Route::get('/{lembaga}/pengurus/izinKeluarSantri/create', IzinKeluarSantriCreate::class);
+Route::get('/{lembaga}/pengurus/izinKeluarSantri/{izinKeluarSantri}/edit', IzinKeluarSantriEdit::class);
+Route::get('/{lembaga}/pengurus/detailIzinKeluarSantri/{santri}', IzinKeluarSantriDetail::class);
+// crud izin keluar santri by pengurus end
 
- 
-  // crud izin pulang santri by pengurus start
-  Route::get('/{lembaga}/pengurus/izinPulangSantri', IzinPulangSantriList::class);
-  Route::get('/{lembaga}/pengurus/izinPulangSantri/create', IzinPulangSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/izinPulangSantri/{izinPulangSantri}/edit', IzinPulangSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/detailIzinPulangSantri/{santri}', IzinPulangSantriDetail::class);
-  // crud izin pulang santri by pengurus start
 
-  
-  // crud izin sakit santri by pengurus start
-  Route::get('/{lembaga}/pengurus/izinSakitSantri', IzinSakitSantriList::class);
-  Route::get('/{lembaga}/pengurus/izinSakitSantri/create', IzinSakitSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/izinSakitSantri/{izinSakitSantri}/edit', IzinSakitSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/detailIzinSakitSantri/{santri}', IzinSakitSantriDetail::class);
-  // crud izin sakit santri by pengurus start
+// crud izin pulang santri by pengurus start
+Route::get('/{lembaga}/pengurus/izinPulangSantri', IzinPulangSantriList::class);
+Route::get('/{lembaga}/pengurus/izinPulangSantri/create', IzinPulangSantriCreate::class);
+Route::get('/{lembaga}/pengurus/izinPulangSantri/{izinPulangSantri}/edit', IzinPulangSantriEdit::class);
+Route::get('/{lembaga}/pengurus/detailIzinPulangSantri/{santri}', IzinPulangSantriDetail::class);
+// crud izin pulang santri by pengurus start
 
-  
-  // crud izin keluar pendamping start
-  Route::get('/pengurus/izinKeluarPendamping', IzinKeluarPendampingList::class);
-  Route::get('/pengurus/izinKeluarPendamping/create', IzinKeluarPendampingCreate::class);
-  Route::get('/pengurus/izinKeluarPendamping/{izinKeluarPendamping}/edit', IzinKeluarPendampingEdit::class);
-  Route::get('/pengurus/izinKeluarPendamping/detail/{user}', IzinKeluarPendampingDetail::class);
-  // crud izin keluar pendamping end
 
-  // crud izin pulang pendamping by pengurus start
-  Route::get('/pengurus/izinPulangPendamping', IzinPulangPendampingList::class);
-  Route::get('/pengurus/izinPulangPendamping/create', IzinPulangPendampingCreate::class);
-  Route::get('/pengurus/izinPulangPendamping/detail/{user}', IzinPulangPendampingDetail::class);
-  // crud izin pulang pendamping by pengurus end
+// crud izin sakit santri by pengurus start
+Route::get('/{lembaga}/pengurus/izinSakitSantri', IzinSakitSantriList::class);
+Route::get('/{lembaga}/pengurus/izinSakitSantri/create', IzinSakitSantriCreate::class);
+Route::get('/{lembaga}/pengurus/izinSakitSantri/{izinSakitSantri}/edit', IzinSakitSantriEdit::class);
+Route::get('/{lembaga}/pengurus/detailIzinSakitSantri/{santri}', IzinSakitSantriDetail::class);
+// crud izin sakit santri by pengurus start
 
-  // crud haid santri start
-    Route::get('/pengurus/haidSantri', HaidSantriList::class);
-    Route::get('/pengurus/haidSantri/create', HaidSantriCreate::class);
-    Route::get('/pengurus/haidSantri/{haidSantri}/edit', HaidSantriEdit::class);
-  // crud haid santri end
 
-  // crud presensi sholat start
-   Route::get('/{lembaga}/pengurus/presensiSholat', PresensiSholatList::class);
-   Route::get('/{lembaga}/pengurus/presensiSholat/create', PresensiSholatCreate::class);
-   Route::post('/pengurus/presensiSholat', [PresensiSholatCreate::class, 'tambah']);
-  //  crud presensi sholat end
+// crud izin keluar pendamping start
+Route::get('/pengurus/izinKeluarPendamping', IzinKeluarPendampingList::class);
+Route::get('/pengurus/izinKeluarPendamping/create', IzinKeluarPendampingCreate::class);
+Route::get('/pengurus/izinKeluarPendamping/{izinKeluarPendamping}/edit', IzinKeluarPendampingEdit::class);
+Route::get('/pengurus/izinKeluarPendamping/detail/{user}', IzinKeluarPendampingDetail::class);
+// crud izin keluar pendamping end
 
-  
-  
-  // crud pelanggaran santri start
-  Route::get('/{lembaga}/pengurus/pelanggaranSantri', PelanggaranSantriList::class);
-  Route::get('/{lembaga}/pengurus/pelanggaranSantri/create', PelanggaranSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/pelanggaranSantri/{pelanggaranSantri}/edit', PelanggaranSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/pelanggaranSantri/detail/{santri}', PelanggaranSantriDetail::class);
-  // crud pelanggaran santri end
+// crud izin pulang pendamping by pengurus start
+Route::get('/pengurus/izinPulangPendamping', IzinPulangPendampingList::class);
+Route::get('/pengurus/izinPulangPendamping/create', IzinPulangPendampingCreate::class);
+Route::get('/pengurus/izinPulangPendamping/detail/{user}', IzinPulangPendampingDetail::class);
+// crud izin pulang pendamping by pengurus end
 
-  
-  // crud penghargaan santri start
-  Route::get('/{lembaga}/pengurus/penghargaanSantri', PenghargaanSantriList::class);
-  Route::get('/{lembaga}/pengurus/penghargaanSantri/create', PenghargaanSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/penghargaanSantri/{penghargaanSantri}/edit', PenghargaanSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/penghargaanSantri/detail/{santri}', PenghargaanSantriDetail::class);
-  // crud penghargaan santri end
+// crud haid santri start
+Route::get('/pengurus/haidSantri', HaidSantriList::class);
+Route::get('/pengurus/haidSantri/create', HaidSantriCreate::class);
+Route::get('/pengurus/haidSantri/{haidSantri}/edit', HaidSantriEdit::class);
+// crud haid santri end
 
-  
-  
-  // crud pengurangan poin start
-  Route::get('/{lembaga}/pengurus/penguranganPoin', PenguranganPoinList::class);
-  Route::get('/{lembaga}/pengurus/penguranganPoin/create', PenguranganPoinCreate::class);
-  Route::get('/{lembaga}/pengurus/penguranganPoin/{penguranganPoin}/edit', PenguranganPoinEdit::class);
-  Route::get('/{lembaga}/pengurus/penguranganPoin/detail/{santri}', PenguranganPoinDetail::class);
-  // crud pengurangan poin end
+// crud presensi sholat start
+Route::get('/{lembaga}/pengurus/presensiSholat', PresensiSholatList::class);
+Route::get('/{lembaga}/pengurus/presensiSholat/create', PresensiSholatCreate::class);
+Route::post('/pengurus/presensiSholat', [PresensiSholatCreate::class, 'tambah']);
+//  crud presensi sholat end
 
-  
-  
-   // catatan santri start
-  Route::get('/{lembaga}/pengurus/catatanSantri', CatatanSantriList::class);
-  Route::get('/{lembaga}/pengurus/catatanSantri/create', CatatanSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/catatanSantri/{catatanSantri}/edit', CatatanSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/catatanSantri/detail/{santri}', CatatanSantriDetail::class);
-  // catatan santri end
 
-  // crud pembinaan santri start
-  Route::get('/{lembaga}/pengurus/pembinaanSantri', PembinaanSantriList::class);
-  Route::get('/{lembaga}/pengurus/pembinaanSantri/create', PembinaanSantriCreate::class);
-  Route::get('/{lembaga}/pengurus/pembinaanSantri/{pembinaanSantri}/edit', PembinaanSantriEdit::class);
-  Route::get('/{lembaga}/pengurus/pembinaanSantri/detail/{santri}', PembinaanSantriDetail::class);
-  // crud pembinaan santri end
 
-  // crud presensi insidentil santri start
-  Route::get('/{lembaga}/pengurus/presensiInsidentilSantri', PresensiInsidentilSantriList::class);
-  Route::get('/{lembaga}/pengurus/presensiInsidentilSantri/create', PresensiInsidentilSantriCreate::class);
-  Route::post('/{lembaga}/pengurus/presensiInsidentilSantri', [PresensiInsidentilSantriCreate::class, 'tambah']);
-  // crud presensi insidentil santri end
+// crud pelanggaran santri start
+Route::get('/{lembaga}/pengurus/pelanggaranSantri', PelanggaranSantriList::class);
+Route::get('/{lembaga}/pengurus/pelanggaranSantri/create', PelanggaranSantriCreate::class);
+Route::get('/{lembaga}/pengurus/pelanggaranSantri/{pelanggaranSantri}/edit', PelanggaranSantriEdit::class);
+Route::get('/{lembaga}/pengurus/pelanggaranSantri/detail/{santri}', PelanggaranSantriDetail::class);
+// crud pelanggaran santri end
 
-  
-  // Presensi asrama start
-  Route::get('/{lembaga}/pendamping/presensiAsrama', PresensiAsramaList::class);
-  Route::get('/{lembaga}/pendamping/presensiAsrama/create', PresensiAsramaCreate::class);
-  Route::post('/pendamping/presensiAsrama', [PresensiAsramaCreate::class, 'tambah']);
+
+// crud penghargaan santri start
+Route::get('/{lembaga}/pengurus/penghargaanSantri', PenghargaanSantriList::class);
+Route::get('/{lembaga}/pengurus/penghargaanSantri/create', PenghargaanSantriCreate::class);
+Route::get('/{lembaga}/pengurus/penghargaanSantri/{penghargaanSantri}/edit', PenghargaanSantriEdit::class);
+Route::get('/{lembaga}/pengurus/penghargaanSantri/detail/{santri}', PenghargaanSantriDetail::class);
+// crud penghargaan santri end
+
+
+
+// crud pengurangan poin start
+Route::get('/{lembaga}/pengurus/penguranganPoin', PenguranganPoinList::class);
+Route::get('/{lembaga}/pengurus/penguranganPoin/create', PenguranganPoinCreate::class);
+Route::get('/{lembaga}/pengurus/penguranganPoin/{penguranganPoin}/edit', PenguranganPoinEdit::class);
+Route::get('/{lembaga}/pengurus/penguranganPoin/detail/{santri}', PenguranganPoinDetail::class);
+// crud pengurangan poin end
+
+
+
+// catatan santri start
+Route::get('/{lembaga}/pengurus/catatanSantri', CatatanSantriList::class);
+Route::get('/{lembaga}/pengurus/catatanSantri/create', CatatanSantriCreate::class);
+Route::get('/{lembaga}/pengurus/catatanSantri/{catatanSantri}/edit', CatatanSantriEdit::class);
+Route::get('/{lembaga}/pengurus/catatanSantri/detail/{santri}', CatatanSantriDetail::class);
+// catatan santri end
+
+// crud pembinaan santri start
+Route::get('/{lembaga}/pengurus/pembinaanSantri', PembinaanSantriList::class);
+Route::get('/{lembaga}/pengurus/pembinaanSantri/create', PembinaanSantriCreate::class);
+Route::get('/{lembaga}/pengurus/pembinaanSantri/{pembinaanSantri}/edit', PembinaanSantriEdit::class);
+Route::get('/{lembaga}/pengurus/pembinaanSantri/detail/{santri}', PembinaanSantriDetail::class);
+// crud pembinaan santri end
+
+// crud presensi insidentil santri start
+Route::get('/{lembaga}/pengurus/presensiInsidentilSantri', PresensiInsidentilSantriList::class);
+Route::get('/{lembaga}/pengurus/presensiInsidentilSantri/create', PresensiInsidentilSantriCreate::class);
+Route::post('/{lembaga}/pengurus/presensiInsidentilSantri', [PresensiInsidentilSantriCreate::class, 'tambah']);
+// crud presensi insidentil santri end
+
+
+// Presensi asrama start
+Route::get('/{lembaga}/pengurus/presensiAsrama', PresensiAsramaList::class);
+Route::get('/{lembaga}/pengurus/presensiAsrama/create', PresensiAsramaCreate::class);
+Route::post('/pengurus/presensiAsrama', [PresensiAsramaCreate::class, 'tambah']);
   // Presensi asrama end
