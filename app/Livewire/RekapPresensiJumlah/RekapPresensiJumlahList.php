@@ -16,15 +16,17 @@ use Maatwebsite\Excel\Facades\Excel;
 class RekapPresensiJumlahList extends Component
 {
   public $lembaga;
+  public $role;
   public $search;
   public $tanggalAwal;
   public $tanggalAkhir;
-  public $selectedMapel = 'semua';
-  public $selectedKelas = 'semua';
+  public $selectedMapel;
+  public $selectedKelas;
 
   public function mount(Lembaga $lembaga)
   {
     $this->lembaga = $lembaga;
+    $this->role = explode('/', request()->path())[1];
   }
 
   public function download()
@@ -33,18 +35,19 @@ class RekapPresensiJumlahList extends Component
 
 
     if ($this->selectedMapel != 'semua') {
-      $mapel = Pelajaran::find($this->selectedMapel);
+      $mapel = Pelajaran::find($this->selectedMapel)->nama;
     } else {
       $mapel = 'Semua';
     }
 
     if ($this->selectedKelas != 'semua') {
-      $kelas = Kelas::find($this->selectedKelas);
+      $kelas = Kelas::find($this->selectedKelas)->nama;
     } else {
       $kelas = 'Semua';
     }
 
     $title = "Rekap Presensi " . $this->lembaga->nama . ' mulai ' . date('d-m-Y', strtotime($this->tanggalAwal)) . ' sampai ' . date('d-m-Y', strtotime($this->tanggalAkhir)) . ' mapel ' . $mapel . ' kelas ' . $kelas  . '.xlsx';
+
 
     return Excel::download(new RekapPresensiJumlah($this->tanggalAwal, $this->tanggalAkhir, $this->lembaga, $this->selectedMapel, $this->selectedKelas), $title);
   }
@@ -52,13 +55,13 @@ class RekapPresensiJumlahList extends Component
   public function render()
   {
 
-    if ($this->tanggalAwal && $this->tanggalAkhir) {
+    if ($this->tanggalAwal && $this->tanggalAkhir && $this->selectedKelas && $this->selectedMapel) {
       $presensis = Presensi::where('lembaga_id', $this->lembaga->id)->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime($this->tanggalAwal)), date('Y-m-d 23:59:59', strtotime($this->tanggalAkhir))])->rekapMapel($this->selectedMapel)->rekapKelas($this->selectedKelas)->get();
     } else {
       $presensis = null;
     }
 
-    if ($this->selectedKelas) {
+    if ($this->selectedKelas && $this->selectedKelas != 'semua') {
       $santris = Santri::kelas($this->lembaga->jenis_lembaga, $this->selectedKelas);
     } else {
       $kelas = Kelas::where('lembaga_id', $this->lembaga->id)->pluck('id')->toArray();
@@ -80,11 +83,23 @@ class RekapPresensiJumlahList extends Component
     }
 
 
+    if ($this->role == 'walikelas') {
+      $queryKelas = Kelas::where('lembaga_id', $this->lembaga->id)->where('user_id', auth()->user()->id)->get();
+      $queryMapels = Pelajaran::where('lembaga_id', $this->lembaga->id)->get();
+    } elseif ($this->role == 'guru') {
+      $queryKelas = auth()->user()->kelasMengajar;
+      $queryMapels = auth()->user()->pelajaran;
+    } else {
+      $queryKelas = Kelas::where('lembaga_id', $this->lembaga->id)->get();
+      $queryMapels = Pelajaran::where('lembaga_id', $this->lembaga->id)->get();
+    }
+
+
     return view('livewire.rekap-presensi-jumlah.rekap-presensi-jumlah-list', [
       'presensis' => $presensis,
       'santris' => $santris->filter($this->search)->get(),
-      'mapels' => Pelajaran::where('lembaga_id', $this->lembaga->id)->get(),
-      'kelass' => Kelas::where('lembaga_id', $this->lembaga->id)->get(),
+      'mapels' => $queryMapels,
+      'kelass' => $queryKelas,
     ])->title('Rekap Presensi (Jumlah) ' . $this->lembaga->nama);
   }
 }

@@ -38,7 +38,6 @@ Route::middleware('auth')->group(function () {
 
 
   // Rekap Presensi Jumlah Start
-
   Route::get('/{lembaga}/superadmin/rekapPresensiJumlah', RekapPresensiJumlahList::class);
   // Rekap Presensi Jumlah End
 

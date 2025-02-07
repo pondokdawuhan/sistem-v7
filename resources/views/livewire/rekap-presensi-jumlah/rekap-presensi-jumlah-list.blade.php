@@ -24,7 +24,10 @@
           <label for="pelajaran" class="text-slate-900 dark:text-white">Pelajaran</label>
           <select wire:model.live.debounce.300ms="selectedMapel" id="pelajaran"
             class="px-3 py-1 rounded-md text-slate-900 dark:text-white dark:bg-slate-900">
-            <option value="">Semua</option>
+            <option value="">Pilih</option>
+            @if ($role != 'guru' && $role != 'walikelas')
+              <option value="semua">Semua</option>
+            @endif
             @foreach ($mapels as $mapel)
               <option value="{{ $mapel->id }}">{{ $mapel->nama }}</option>
             @endforeach
@@ -34,7 +37,10 @@
           <label for="kelas" class="text-slate-900 dark:text-white">Kelas</label>
           <select wire:model.live.debounce.300ms="selectedKelas" id="kelas"
             class="px-3 py-1 rounded-md text-slate-900 dark:text-white dark:bg-slate-900">
-            <option value="">Semua</option>
+            <option value="">Pilih</option>
+            @if ($role != 'guru' && $role != 'walikelas')
+              <option value="semua">Semua</option>
+            @endif
             @foreach ($kelass as $kelas)
               <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
             @endforeach

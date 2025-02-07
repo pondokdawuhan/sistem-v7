@@ -22,6 +22,7 @@ use App\Http\Controllers\SantriController;
 use App\Livewire\BatasPoin\BatasPoinCreate;
 use App\Livewire\RaporSantri\RaporSantriList;
 use App\Livewire\TahunAjaran\TahunAjaranList;
+use App\Livewire\RaporWablas\RaportWablasList;
 use App\Livewire\RaporLembaga\RaporLembagaList;
 use App\Livewire\RaporSantri\RaporSantriDetail;
 use App\Livewire\RaporLembaga\RaporLembagaDetail;
@@ -38,117 +39,121 @@ use App\Livewire\RekapPelanggaran\RekapPelanggaranList;
 use App\Livewire\RekapPenghargaan\RekapPenghargaanList;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiAsrama;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiSholat;
+use App\Livewire\RekapPresensiJumlah\RekapPresensiJumlahList;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiEkstrakurikuler;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiKegiatanAsatidz;
 use App\Livewire\PerbaikanPresensi\PerbaikanPresensiSholatPendamping;
 use App\Livewire\PerbaikanPresensiInsidentilSantri\PerbaikanPresensiInsidentilSantriList;
-use App\Livewire\RaporWablas\RaportWablasList;
 
- // crud lembaga start
-  Route::get('/lembaga', Lembaga::class);
-  Route::get('/lembaga/create', LembagaCreate::class);
-  Route::get('/lembaga/{lembaga}/edit', LembagaEdit::class);
-  // crud lembaga end
-
-
-  // crud kelas start
-  Route::get('/kelas/{lembaga}', KelasList::class);
-  Route::get('/editRombel/{lembaga}/{kelas}', KelasRombel::class);
-  // crud kelas end
-  
-
-  // crud user start
-  Route::get('/user', UserList::class);
-  Route::get('/user/create', UserCreate::class);
-  Route::get('/user/{user}/edit', UserEdit::class);
-  Route::get('/user/{user}/show', UserShow::class);
-  Route::get('/user/cetakKartu/{user}', [UserController::class, 'cetakKartu']);
-  // crud user end
+// crud lembaga start
+Route::get('/lembaga', Lembaga::class);
+Route::get('/lembaga/create', LembagaCreate::class);
+Route::get('/lembaga/{lembaga}/edit', LembagaEdit::class);
+// crud lembaga end
 
 
-  // crud santri start
-  Route::get('/santri', SantriList::class);
-  Route::get('/santri/create', SantriCreate::class);
-  Route::get('/santri/show/{santri}', SantriShow::class);
-  Route::get('/santri/{santri}/edit', SantriEdit::class);
-  Route::get('/santri/cetakKartuSantri/{santri}', [SantriController::class, 'downloadKartuSantri']);
-  Route::get('/santri/cetakKartuWaliSantri/{santri}', [SantriController::class, 'downloadKartuWaliSantri']);
-  // crud santri end
-  
-
-  // crud pelajaran start
-  Route::get('/pelajaran/{lembaga}', PelajaranList::class);
-  // crud pelajaran end
+// crud kelas start
+Route::get('/kelas/{lembaga}', KelasList::class);
+Route::get('/editRombel/{lembaga}/{kelas}', KelasRombel::class);
+// crud kelas end
 
 
-  // crud ekstra start
-  Route::get('/ekstrakurikuler', EkstrakurikulerList::class);
-  Route::get('/ekstra/editRombel/{ekstrakurikuler}', EkstrakurikulerRombel::class);
-  // crud ekstra end
+// crud user start
+Route::get('/user', UserList::class);
+Route::get('/user/create', UserCreate::class);
+Route::get('/user/{user}/edit', UserEdit::class);
+Route::get('/user/{user}/show', UserShow::class);
+Route::get('/user/cetakKartu/{user}', [UserController::class, 'cetakKartu']);
+// crud user end
 
 
-  // crud referensi poin start
-  Route::get('/referensiPoin', ReferensiPoinList::class);
-  // crud referensi poin end
+// crud santri start
+Route::get('/santri', SantriList::class);
+Route::get('/santri/create', SantriCreate::class);
+Route::get('/santri/show/{santri}', SantriShow::class);
+Route::get('/santri/{santri}/edit', SantriEdit::class);
+Route::get('/santri/cetakKartuSantri/{santri}', [SantriController::class, 'downloadKartuSantri']);
+Route::get('/santri/cetakKartuWaliSantri/{santri}', [SantriController::class, 'downloadKartuWaliSantri']);
+// crud santri end
 
-  // perbaikan presensi start
-  Route::get('/{lembaga}/superadmin/perbaikanPresensi', PerbaikanPresensi::class);
-  // perbaikan presensi end
 
-  // perbaikan presensi sholat start
-      Route::get('/superadmin/perbaikanPresensiSholat', PerbaikanPresensiSholat::class);
-  // perbaikan presensi sholat end
-  // jadwal pelajaran end
-  
-  Route::get('/superadmin/perbaikanPresensiEkstrakurikuler', PerbaikanPresensiEkstrakurikuler::class);
-  
-  Route::get('/superadmin/perbaikanPresensiSholatPendamping', PerbaikanPresensiSholatPendamping::class);
-  
-  Route::get('/superadmin/perbaikanPresensiKegiatanAsatidz', PerbaikanPresensiKegiatanAsatidz::class);
-  
-  Route::get('/{lembaga}/superadmin/perbaikanPresensiInsidentilSantri', PerbaikanPresensiInsidentilSantriList::class);
-  
-  Route::get('/{lembaga}/superadmin/rekapPresensi', RekapPresensiList::class);
-  
-  Route::get('/superadmin/rekapPelanggaran', RekapPelanggaranList::class);
-  Route::get('/superadmin/rekapPembinaan', RekapPembinaanList::class);
-  Route::get('/superadmin/rekapPenghargaan', RekapPenghargaanList::class);
-  
-  
-    // tahun ajaran start
-    Route::get('/tahunAjaran', TahunAjaranList::class);
-    // tahun ajaran end
-  
-    // jadwal pelajaran start
-    
-    Route::get('/{lembaga}/superadmin/jadwalPelajaran', JadwalPelajaranList::class);
-    Route::post('/{lembaga}/superadmin/jadwalPelajaran', [JadwalPelajaranList::class, 'simpan']);
-  
-  Route::get('/raporSantri/{kelas}/superadmin', RaporSantriList::class);
-  Route::get('/raporSantri/detail/{santri}/{kelas}/superadmin', RaporSantriDetail::class);
+// crud pelajaran start
+Route::get('/pelajaran/{lembaga}', PelajaranList::class);
+// crud pelajaran end
 
-  Route::get('/{lembaga}/superadmin/raporLembaga', RaporLembagaList::class);
-  Route::get('/{lembaga}/superadmin/raporLembaga/detail/{user}', RaporLembagaDetail::class);
 
-  
-  // Batas Poin start
-  Route::get('/batasPoin', BatasPoinList::class);
-  Route::get('/batasPoin/tambah', BatasPoinCreate::class);
-  Route::get('/batasPoin/edit/{batasPoin}', BatasPoinEdit::class);
-  // Batas Poin end
+// crud ekstra start
+Route::get('/ekstrakurikuler', EkstrakurikulerList::class);
+Route::get('/ekstra/editRombel/{ekstrakurikuler}', EkstrakurikulerRombel::class);
+// crud ekstra end
 
-  
 
-  // perbaikan presensi asrama start
-  Route::get('/{lembaga}/superadmin/perbaikanPresensiAsrama', PerbaikanPresensiAsrama::class);
-  // perbaikan presensi asrama end
+// crud referensi poin start
+Route::get('/referensiPoin', ReferensiPoinList::class);
+// crud referensi poin end
 
-  
-  // Rapor Pendamping start
-  Route::get('/{lembaga}/superadmin/raporPendamping', RaporPendampingList::class);
-  Route::get('/{lembaga}/superadmin/raporPendamping/detail/{user}', RaporPendampingDetail::class);
-  // Rapor Pendamping End
+// perbaikan presensi start
+Route::get('/{lembaga}/superadmin/perbaikanPresensi', PerbaikanPresensi::class);
+// perbaikan presensi end
 
-  // rapor wablas start
-  Route::get('/raporWablas', RaportWablasList::class);
-  // rapor wablas end
+// perbaikan presensi sholat start
+Route::get('/superadmin/perbaikanPresensiSholat', PerbaikanPresensiSholat::class);
+// perbaikan presensi sholat end
+// jadwal pelajaran end
+
+Route::get('/superadmin/perbaikanPresensiEkstrakurikuler', PerbaikanPresensiEkstrakurikuler::class);
+
+Route::get('/superadmin/perbaikanPresensiSholatPendamping', PerbaikanPresensiSholatPendamping::class);
+
+Route::get('/superadmin/perbaikanPresensiKegiatanAsatidz', PerbaikanPresensiKegiatanAsatidz::class);
+
+Route::get('/{lembaga}/superadmin/perbaikanPresensiInsidentilSantri', PerbaikanPresensiInsidentilSantriList::class);
+
+Route::get('/{lembaga}/superadmin/rekapPresensi', RekapPresensiList::class);
+
+Route::get('/superadmin/rekapPelanggaran', RekapPelanggaranList::class);
+Route::get('/superadmin/rekapPembinaan', RekapPembinaanList::class);
+Route::get('/superadmin/rekapPenghargaan', RekapPenghargaanList::class);
+
+
+// tahun ajaran start
+Route::get('/tahunAjaran', TahunAjaranList::class);
+// tahun ajaran end
+
+// jadwal pelajaran start
+
+Route::get('/{lembaga}/superadmin/jadwalPelajaran', JadwalPelajaranList::class);
+Route::post('/{lembaga}/superadmin/jadwalPelajaran', [JadwalPelajaranList::class, 'simpan']);
+
+Route::get('/raporSantri/{kelas}/superadmin', RaporSantriList::class);
+Route::get('/raporSantri/detail/{santri}/{kelas}/superadmin', RaporSantriDetail::class);
+
+Route::get('/{lembaga}/superadmin/raporLembaga', RaporLembagaList::class);
+Route::get('/{lembaga}/superadmin/raporLembaga/detail/{user}', RaporLembagaDetail::class);
+
+
+// Batas Poin start
+Route::get('/batasPoin', BatasPoinList::class);
+Route::get('/batasPoin/tambah', BatasPoinCreate::class);
+Route::get('/batasPoin/edit/{batasPoin}', BatasPoinEdit::class);
+// Batas Poin end
+
+
+
+// perbaikan presensi asrama start
+Route::get('/{lembaga}/superadmin/perbaikanPresensiAsrama', PerbaikanPresensiAsrama::class);
+// perbaikan presensi asrama end
+
+
+// Rapor Pendamping start
+Route::get('/{lembaga}/superadmin/raporPendamping', RaporPendampingList::class);
+Route::get('/{lembaga}/superadmin/raporPendamping/detail/{user}', RaporPendampingDetail::class);
+// Rapor Pendamping End
+
+// rapor wablas start
+Route::get('/raporWablas', RaportWablasList::class);
+// rapor wablas end
+
+// Rekap Presensi Jumlah Start
+Route::get('/{lembaga}/superadmin/rekapPresensiJumlah', RekapPresensiJumlahList::class);
+  // Rekap Presensi Jumlah End
