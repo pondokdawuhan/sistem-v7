@@ -15,21 +15,21 @@
 
 
         <x-navbar-super-admin></x-navbar-super-admin>
-        {{-- <x-navbar-admin></x-navbar-admin> --}}
+        <x-navbar-admin></x-navbar-admin>
         <x-navbar-guru></x-navbar-guru>
-        {{-- <x-navbar-guru-piket></x-navbar-guru-piket> --}}
-        {{-- <x-navbar-guru-ekstra></x-navbar-guru-ekstra> --}}
-        {{-- <x-navbar-kurikulum></x-navbar-kurikulum> --}}
-        {{-- <x-navbar-ketertiban></x-navbar-ketertiban> --}}
+        <x-navbar-guru-piket></x-navbar-guru-piket>
+        <x-navbar-guru-ekstra></x-navbar-guru-ekstra>
+        <x-navbar-kurikulum></x-navbar-kurikulum>
+        <x-navbar-ketertiban></x-navbar-ketertiban>
         <x-navbar-kesiswaan></x-navbar-kesiswaan>
-        {{-- <x-navbar-kepala></x-navbar-kepala> --}}
+        <x-navbar-kepala></x-navbar-kepala>
         <x-navbar-wali-kelas></x-navbar-wali-kelas>
-        {{-- <x-navbar-pendamping></x-navbar-pendamping> --}}
-        {{-- <x-navbar-pengurus></x-navbar-pengurus> --}}
-        {{-- <x-navbar-ketua-asrama></x-navbar-ketua-asrama> --}}
-        {{-- <x-navbar-keamanan></x-navbar-keamanan> --}}
+        <x-navbar-pendamping></x-navbar-pendamping>
+        <x-navbar-pengurus></x-navbar-pengurus>
+        <x-navbar-ketua-asrama></x-navbar-ketua-asrama>
+        <x-navbar-keamanan></x-navbar-keamanan>
         <x-navbar-pengasuh></x-navbar-pengasuh>
-        {{-- <x-navbar-yayasan></x-navbar-yayasan> --}}
+        <x-navbar-yayasan></x-navbar-yayasan>
 
 
         <h6 class="my-3 text-slate-900 dark:text-white border-b italic">All</h6>
